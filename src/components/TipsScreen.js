@@ -30,7 +30,7 @@ const styles = {
   header: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     gap: '10px',
     marginBottom: '20px',
   },
