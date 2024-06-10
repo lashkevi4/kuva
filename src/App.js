@@ -13,7 +13,7 @@ function App() {
       <Route path="/" element={<StartScreen />} />
       <Route path="/categories" element={<CategoryScreen />} />
       <Route path="/pose-preview/:categoryId" element={<PosePreviewScreen />} />
-      <Route path="/pose-detail/:poseId" element={<PoseDetailScreen />} />
+      <Route path="/pose-detail/:categoryId/:poseId" element={<PoseDetailScreen />} />
       <Route path="/tips" element={<TipsScreen />} />
       <Route path="/tip-detail/:tipId" element={<TipDetailScreen />} />
     </Routes>
