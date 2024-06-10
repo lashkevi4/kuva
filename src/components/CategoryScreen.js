@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import BackButton from './BackButton';
 
 const categories = [
-  { id: 1, name: 'Дети' },
-  { id: 2, name: 'Женщины' },
-  { id: 3, name: 'Мужчины' },
-  { id: 4, name: 'Пары' },
-  { id: 5, name: 'Группы' },
-  { id: 6, name: 'Свадебные' },
-  { id: 7, name: 'Гламур' },
+  { id: 1, name: 'Дети', icon: 'children.svg' },
+  { id: 2, name: 'Женщины', icon: 'women.svg' },
+  { id: 3, name: 'Мужчины', icon: 'men.svg' },
+  { id: 4, name: 'Пары', icon: 'couples.svg' },
+  { id: 5, name: 'Группы', icon: 'groups.svg' },
+  { id: 6, name: 'Свадебные', icon: 'wedding.svg' },
+  { id: 7, name: 'Гламур', icon: 'glamour.svg' },
 ];
 
 function CategoryScreen() {
@@ -22,7 +22,8 @@ function CategoryScreen() {
       <div style={styles.grid}>
         {categories.map(category => (
           <Link to={`/pose-preview/${category.id}`} key={category.id} style={styles.item}>
-            {category.name}
+            <img src={`/images/app/${category.icon}`} alt={category.name} style={styles.icon} />
+            <span style={styles.text}>{category.name}</span>
           </Link>
         ))}
       </div>
@@ -34,7 +35,6 @@ const styles = {
   container: {
     textAlign: 'center',
     padding: '20px',
-    position: 'relative',
   },
   header: {
     display: 'flex',
@@ -50,16 +50,28 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
+    alignItems: 'center', // центрируем элементы по горизонтали
   },
   item: {
-    padding: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '10px',
     border: '1px solid #000',
     borderRadius: '5px',
-    textAlign: 'center',
     textDecoration: 'none',
     color: '#000',
-    fontSize: '18px',
-    fontWeight: 'bold',
+    width: '100%',
+    maxWidth: '300px',
+    justifyContent: 'center', // центрируем элементы по горизонтали внутри
+  },
+  icon: {
+    width: '50px',
+    height: '50px',
+    marginRight: '10px', // небольшое расстояние между картинкой и текстом
+  },
+  text: {
+    fontSize: '30px', // используем тот же размер шрифта, что и на главной странице
+    fontFamily: 'Georgia, serif', // используем тот же шрифт, что и на главной странице
   },
 };
 
