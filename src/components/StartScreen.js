@@ -4,17 +4,12 @@ import { Link } from 'react-router-dom';
 function StartScreen() {
   return (
     <div style={styles.container}>
-      <img src="/images/app/start-screen.webp" alt="App Presentation" style={styles.image} />
-      <nav style={styles.nav}>
-        <ul style={styles.ul}>
-          <li style={styles.li}>
-            <Link to="/categories" style={styles.link}>Позы</Link>
-          </li>
-          <li style={styles.li}>
-            <Link to="/tips" style={styles.link}>Советы и хитрости</Link>
-          </li>
-        </ul>
-      </nav>
+      <h1 style={styles.titleSmall}>— T H E —</h1>
+      <h2 style={styles.titleLarge}>POSING</h2>
+      <p style={styles.description}>Your story, my lens, a timeless masterpiece awaits</p>
+      <img src="/images/app/start-screen.png" alt="Posing App" style={styles.image} />
+      <Link to="/categories" style={styles.button}>Позы</Link>
+      <Link to="/tips" style={styles.button}>Советы и хитрости</Link>
     </div>
   );
 }
@@ -22,34 +17,45 @@ function StartScreen() {
 const styles = {
   container: {
     textAlign: 'center',
-    padding: '20px'
+    padding: '20px',
+  },
+  titleSmall: {
+    fontSize: '20px',
+    margin: '10px 0',
+    fontFamily: 'Georgia, serif',
+    letterSpacing: '0.2em', // дефисы удлиняем
+  },
+  titleLarge: {
+    fontSize: '36px',
+    margin: '5px 0',
+    fontFamily: 'Georgia, serif',
+    letterSpacing: '0.05em',
+  },
+  description: {
+    fontSize: '18px',
+    margin: '10px 0 20px 0',
   },
   image: {
-    width: '100%',
+    maxWidth: '100%',
+    height: 'auto',
+    marginBottom: '20px',
+  },
+  button: {
+    display: 'block',
+    padding: '10px 20px',
+    margin: '20px auto', // увеличенное расстояние между кнопками
+    width: '80%',
     maxWidth: '300px',
-    margin: '0 auto',
-    display: 'block'
-  },
-  nav: {
-    marginTop: '20px'
-  },
-  ul: {
-    listStyleType: 'none',
-    padding: 0
-  },
-  li: {
-    margin: '10px 0',
-    padding: '10px',
-    border: '1px solid #000',
-    borderRadius: '5px',
-    cursor: 'pointer'
-  },
-  link: {
+    textAlign: 'center',
     textDecoration: 'none',
     color: '#000',
-    fontSize: '18px',
-    fontWeight: 'bold'
-  }
+    backgroundColor: 'rgb(247, 243, 238)',
+    border: '2px solid rgb(101, 98, 94)',
+    borderRadius: '5px',
+    fontFamily: 'Georgia, serif',
+    fontSize: '30px',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', // добавление тени
+  },
 };
 
 export default StartScreen;
