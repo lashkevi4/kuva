@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom';
 import { tips } from '../data';
 import BackButton from './BackButton';
 
+const tipIcons = {
+  1: 'basic.svg',
+  2: 'head.svg',
+  3: 'hands.svg',
+  4: 'legs.svg',
+  5: 'body.svg',
+  6: 'composition.svg',
+  7: 'camera.svg',
+};
+
 function TipsScreen() {
   return (
     <div style={styles.container}>
@@ -10,13 +20,14 @@ function TipsScreen() {
         <BackButton />
         <h1 style={styles.title}>Советы и хитрости</h1>
       </div>
-      <ul style={styles.ul}>
+      <div style={styles.grid}>
         {tips.map(tip => (
-          <li key={tip.id} style={styles.li}>
-            <Link to={`/tip-detail/${tip.id}`} style={styles.link}>{tip.name}</Link>
-          </li>
+          <Link to={`/tip-detail/${tip.id}`} key={tip.id} style={styles.item}>
+            <img src={`/images/app/${tipIcons[tip.id]}`} alt={tip.name} style={styles.icon} />
+            <span style={styles.text}>{tip.name}</span>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
@@ -25,7 +36,7 @@ const styles = {
   container: {
     textAlign: 'center',
     padding: '20px',
-    position: 'relative',
+    backgroundColor: '#fff',
   },
   header: {
     display: 'flex',
@@ -35,24 +46,40 @@ const styles = {
     marginBottom: '20px',
   },
   title: {
-    margin: 0,
+    fontSize: '36px',
+    fontFamily: 'Georgia, serif',
+    textAlign: 'center',
+    flex: 1,
   },
-  ul: {
-    listStyleType: 'none',
-    padding: 0,
+  grid: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+    alignItems: 'center',
   },
-  li: {
-    margin: '10px 0',
+  item: {
+    display: 'flex',
+    alignItems: 'center',
     padding: '10px',
-    border: '1px solid #000',
+    border: '2px solid rgb(101, 98, 94)',
     borderRadius: '5px',
-    cursor: 'pointer',
-  },
-  link: {
     textDecoration: 'none',
     color: '#000',
-    fontSize: '18px',
-    fontWeight: 'bold',
+    width: '80%',
+    maxWidth: '300px',
+    backgroundColor: 'rgb(247, 243, 238)',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+  },
+  icon: {
+    width: '50px',
+    height: '50px',
+    marginRight: '10px',
+  },
+  text: {
+    fontSize: '30px',
+    fontFamily: 'Georgia, serif',
+    flex: 1,
+    textAlign: 'center',
   },
 };
 

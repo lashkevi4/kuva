@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 
 const categories = [
   { id: 1, name: 'Дети', path: 'children' },
@@ -15,7 +16,10 @@ function PoseDetailScreen() {
   const { categoryId, poseId } = useParams();
   const [pose, setPose] = useState(null);
   const [poses, setPoses] = useState([]);
+  const [swipeDirection, setSwipeDirection] = useState('');
   const category = categories.find(c => c.id === parseInt(categoryId));
+  const navigate = useNavigate();
+  const animationDuration = 500; // Время анимации в миллисекундах
 
   useEffect(() => {
     if (category) {
@@ -30,28 +34,41 @@ function PoseDetailScreen() {
     }
   }, [category, poseId]);
 
+  const nextPoseId = parseInt(poseId) < poses.length ? parseInt(poseId) + 1 : 1;
+  const prevPoseId = parseInt(poseId) > 1 ? parseInt(poseId) - 1 : poses.length;
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      setSwipeDirection('left');
+      setTimeout(() => {
+        setSwipeDirection('');
+        navigate(`/pose-detail/${categoryId}/${nextPoseId}`);
+      }, animationDuration);
+    },
+    onSwipedRight: () => {
+      setSwipeDirection('right');
+      setTimeout(() => {
+        setSwipeDirection('');
+        navigate(`/pose-detail/${categoryId}/${prevPoseId}`);
+      }, animationDuration);
+    },
+  });
+
   if (!pose || !category) {
     return <div>Loading...</div>;
   }
 
-  const nextPoseId = parseInt(poseId) < poses.length ? parseInt(poseId) + 1 : 1;
-  const prevPoseId = parseInt(poseId) > 1 ? parseInt(poseId) - 1 : poses.length;
-
   return (
-    <div style={styles.container}>
+    <div style={styles.container} {...handlers}>
       <div style={styles.header}>
         <Link to={`/pose-preview/${categoryId}`} style={styles.backButton}>
           <img src="/images/app/back.svg" alt="Назад" style={styles.backIcon} />
         </Link>
         <h1 style={styles.title}>{category.name}</h1>
       </div>
-      <div style={styles.content}>
+      <div style={{ ...styles.content, animationName: swipeDirection === 'left' ? 'swipeLeft' : swipeDirection === 'right' ? 'swipeRight' : 'none', animationDuration: `${animationDuration}ms` }}>
         <img src={`/images/${category.path}/${pose.image}`} alt={pose.description} style={styles.image} />
         <p style={styles.description}>{pose.description}</p>
-        <div style={styles.navigation}>
-          <Link to={`/pose-detail/${categoryId}/${prevPoseId}`} style={styles.navButton}>← Previous</Link>
-          <Link to={`/pose-detail/${categoryId}/${nextPoseId}`} style={styles.navButton}>Next →</Link>
-        </div>
       </div>
     </div>
   );
@@ -87,6 +104,8 @@ const styles = {
   },
   content: {
     textAlign: 'center',
+    animationTimingFunction: 'ease-in-out',
+    animationFillMode: 'both',
   },
   image: {
     width: '100%',
@@ -96,21 +115,22 @@ const styles = {
     fontSize: '18px',
     marginTop: '10px',
   },
-  navigation: {
-    marginTop: '20px',
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  navButton: {
-    fontSize: '18px',
-    textDecoration: 'none',
-    color: '#000',
-    padding: '10px',
-    border: '2px solid rgb(101, 98, 94)',
-    borderRadius: '5px',
-    backgroundColor: 'rgb(247, 243, 238)',
-    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-  },
 };
+
+// Добавьте анимации в CSS
+const styleSheet = document.styleSheets[0];
+styleSheet.insertRule(`
+  @keyframes swipeLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+`, styleSheet.cssRules.length);
+
+styleSheet.insertRule(`
+  @keyframes swipeRight {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+  }
+`, styleSheet.cssRules.length);
 
 export default PoseDetailScreen;
