@@ -14,6 +14,16 @@ const tipIcons = {
 };
 
 function TipsScreen() {
+  const categories = [
+    { id: 1, name: 'Основы', path: 'basic' },
+    { id: 2, name: 'Голова', path: 'head' },
+    { id: 3, name: 'Руки', path: 'hands' },
+    { id: 4, name: 'Ноги', path: 'legs' },
+    { id: 5, name: 'Тело', path: 'body' },
+    { id: 6, name: 'Композиция', path: 'composition' },
+    { id: 7, name: 'Оборудование', path: 'equipment' },
+  ];
+
   return (
     <div style={styles.container}>
       <div style={styles.header}>
@@ -21,10 +31,10 @@ function TipsScreen() {
         <h1 style={styles.title}>Советы и хитрости</h1>
       </div>
       <div style={styles.grid}>
-        {tips.map(tip => (
-          <Link to={`/tip-detail/${tip.id}`} key={tip.id} style={styles.item}>
-            <img src={`/images/app/${tipIcons[tip.id]}`} alt={tip.name} style={styles.icon} />
-            <span style={styles.text}>{tip.name}</span>
+        {categories.map(category => (
+          <Link to={`/tips/${category.id}/1`} key={category.id} style={styles.item}>
+            <img src={`/images/app/${tipIcons[category.id]}`} alt={category.name} style={styles.icon} />
+            <span style={styles.text}>{category.name}</span>
           </Link>
         ))}
       </div>

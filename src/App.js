@@ -15,7 +15,7 @@ function App() {
       <Route path="/pose-preview/:categoryId" element={<PosePreviewScreen />} />
       <Route path="/pose-detail/:categoryId/:poseId" element={<PoseDetailScreen />} />
       <Route path="/tips" element={<TipsScreen />} />
-      <Route path="/tip-detail/:tipId" element={<TipDetailScreen />} />
+      <Route path="/tips/:categoryId/:tipId" element={<TipDetailScreen />} />
     </Routes>
   );
 }
