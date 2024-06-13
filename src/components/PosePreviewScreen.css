@@ -1,0 +1,51 @@
+.container {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.backIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.title {
+  font-size: 36px;
+  font-family: Georgia, serif;
+  text-align: center;
+  flex: 1;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.item {
+  width: calc(50% - 10px);
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  border-radius: 10px;
+}
