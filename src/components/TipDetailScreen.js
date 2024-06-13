@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
-import { categoriesTips } from '../categoriesTips';
-import BackButton from './BackButton';
-import './TipDetailScreen.css';
+import { categoriesTips } from '../categoriesTips'; // Импортируем категории советов
+import './TipDetailScreen.css'; // Импортируем стили
 
 function TipDetailScreen() {
   const { categoryId, tipId } = useParams();
@@ -49,7 +48,9 @@ function TipDetailScreen() {
   return (
     <div className="container" {...handlers}>
       <div className="header">
-        <BackButton />
+        <button onClick={() => navigate('/tips')} className="backButton">
+          <img src="/images/app/back.svg" alt="Назад" className="backIcon" />
+        </button>
         <h1 className="title">{category.name}</h1>
       </div>
       <div className="tip">
