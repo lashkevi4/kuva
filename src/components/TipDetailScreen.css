@@ -12,11 +12,10 @@
   margin-bottom: 20px;
 }
 
-
 .backButton {
   position: absolute;
   left: -2rem;
-  /* Отступ в относительных единицах */
+  /* Позиционируем кнопку слева за границей */
   background: none;
   border: none;
   cursor: pointer;
@@ -36,15 +35,32 @@
 }
 
 .tip {
-  text-align: center;
+  text-align: left;
+  /* Форматируем по левому краю */
   margin: 0 auto;
   max-width: 400px;
+}
+
+.tipTitle {
+  font-size: 1.5rem;
+  /* Крупный шрифт для названия совета */
+  font-weight: bold;
+  /* Жирный шрифт для названия совета */
+  margin-bottom: 10px;
+}
+
+.tipContent {
+  font-size: 1.2rem;
+  /* Крупный шрифт для текста совета */
+  margin-bottom: 10px;
 }
 
 .image {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
+  margin-bottom: 15px;
+  /* Отступ между изображением и текстом */
 }
 
 .navigation {
