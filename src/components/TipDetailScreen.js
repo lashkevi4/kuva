@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
-import { categoriesTips } from '../categoriesTips'; // Импортируем категории советов
-import './TipDetailScreen.css'; // Импортируем стили
+import { categoriesTips } from '../categoriesTips';
+import './TipDetailScreen.css';
 
 function TipDetailScreen() {
   const { categoryId, tipId } = useParams();
@@ -33,7 +33,7 @@ function TipDetailScreen() {
 
   const getNextTipId = () => {
     const currentIndex = tips.findIndex(t => t.id === parseInt(tipId));
-    return tips[(currentIndex + 1) % tips.length].id;
+    return tips[(currentIndex + 1) % tips.length].id; // Исправленная строка
   };
 
   const getPrevTipId = () => {
@@ -55,8 +55,9 @@ function TipDetailScreen() {
       </div>
       <div className="tip">
         <img src={`/images/tips/${category.path}/${tip.image}`} alt={tip.title} className="image" />
+        <h2 className="tipTitle">{tip.title}</h2>
         {tip.content.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
+          <p key={index} className="tipContent">{paragraph}</p>
         ))}
       </div>
       <div className="navigation">
