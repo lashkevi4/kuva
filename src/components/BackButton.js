@@ -5,7 +5,7 @@ function BackButton() {
   const navigate = useNavigate();
 
   return (
-    <button onClick={() => navigate(-1)} style={styles.button}>
+    <button onClick={() => navigate('/')} style={styles.button}>
       <img src="/images/app/back.svg" alt="Назад" style={styles.icon} />
     </button>
   );

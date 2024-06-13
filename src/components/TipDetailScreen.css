@@ -8,13 +8,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  position: relative;
   margin-bottom: 20px;
 }
 
+
+.backButton {
+  position: absolute;
+  left: -2rem;
+  /* Отступ в относительных единицах */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.backIcon {
+  width: 2rem;
+  /* Ширина иконки */
+  height: 2rem;
+  /* Высота иконки */
+}
+
 .title {
-  margin: 0;
-  font-size: 36px;
+  margin: 0 auto;
+  font-size: 2rem;
   font-family: 'Georgia, serif';
 }
 
