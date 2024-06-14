@@ -33,7 +33,7 @@ function TipDetailScreen() {
 
   const getNextTipId = () => {
     const currentIndex = tips.findIndex(t => t.id === parseInt(tipId));
-    return tips[(currentIndex + 1) % tips.length].id; // Исправленная строка
+    return tips[(currentIndex + 1) % tips.length].id;
   };
 
   const getPrevTipId = () => {
@@ -63,7 +63,6 @@ function TipDetailScreen() {
       <div className="navigation">
         <button
           onClick={() => navigate(`/tips/${categoryId}/${getPrevTipId()}`)}
-          disabled={parseInt(tipId) === 1}
           className="navButton"
         >
           <img src="/images/app/left.svg" alt="Назад" className="icon" />
@@ -71,7 +70,6 @@ function TipDetailScreen() {
         <span className="pageIndicator">{`${tipId}/${tips.length}`}</span>
         <button
           onClick={() => navigate(`/tips/${categoryId}/${getNextTipId()}`)}
-          disabled={parseInt(tipId) === tips.length}
           className="navButton"
         >
           <img src="/images/app/right.svg" alt="Вперед" className="icon" />
