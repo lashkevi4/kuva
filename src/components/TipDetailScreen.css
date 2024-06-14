@@ -15,7 +15,6 @@
 .backButton {
   position: absolute;
   left: -2rem;
-  /* Позиционируем кнопку слева за границей */
   background: none;
   border: none;
   cursor: pointer;
@@ -23,9 +22,7 @@
 
 .backIcon {
   width: 2rem;
-  /* Ширина иконки */
   height: 2rem;
-  /* Высота иконки */
 }
 
 .title {
@@ -35,32 +32,27 @@
 }
 
 .tip {
-  text-align: left;
-  /* Форматируем по левому краю */
+  text-align: center;
   margin: 0 auto;
   max-width: 400px;
 }
 
 .tipTitle {
   font-size: 1.5rem;
-  /* Крупный шрифт для названия совета */
   font-weight: bold;
-  /* Жирный шрифт для названия совета */
-  margin-bottom: 10px;
+  text-align: left;
 }
 
 .tipContent {
-  font-size: 1.2rem;
-  /* Крупный шрифт для текста совета */
-  margin-bottom: 10px;
+  text-align: left;
+  font-size: 1.4rem;
+  /* Увеличиваем шрифт */
 }
 
 .image {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
-  margin-bottom: 15px;
-  /* Отступ между изображением и текстом */
 }
 
 .navigation {
