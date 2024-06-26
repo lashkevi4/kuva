@@ -51,22 +51,31 @@ function PoseDetailScreen() {
   }
 
   return (
-    <div className={`container ${swipeDirection}`} {...handlers}>
-      <div className="header">
-        <Link to={`/pose-preview/${categoryId}`} className="backButton">
-          <img src="/images/app/back.svg" alt="Назад" className="backIcon" />
+    <div className={`pose-container ${swipeDirection}`} {...handlers}>
+      <div className="pose-header">
+        <Link to={`/pose-preview/${categoryId}`} className="pose-backButton">
+          <img src="/images/app/back.svg" alt="Назад" className="pose-backIcon" />
         </Link>
-        <h1 className="title">{category.name}</h1>
+        <h1 className="pose-title">{category.name}</h1>
       </div>
       <div
-        className="content"
+        className="pose-content"
         style={{
           animationName: swipeDirection === 'left' ? 'swipeLeft' : swipeDirection === 'right' ? 'swipeRight' : 'none',
           animationDuration: `${animationDuration}ms`,
         }}
       >
-        <img src={`/images/${category.path}/${pose.image}`} alt={pose.description} className="image" />
-        <p className="description">{pose.description}</p>
+        <img src={`/images/${category.path}/${pose.image}`} alt={pose.description} className="pose-image" />
+        <p className="pose-description">{pose.description}</p>
+      </div>
+      <div className="pose-navigation">
+        <button onClick={() => navigate(`/pose-detail/${categoryId}/${prevPoseId}`)} className="pose-navButton">
+          <img src="/images/app/left.svg" alt="Назад" className="pose-icon" />
+        </button>
+        <span className="pose-pageIndicator">{`${poseId}/${poses.length}`}</span>
+        <button onClick={() => navigate(`/pose-detail/${categoryId}/${nextPoseId}`)} className="pose-navButton">
+          <img src="/images/app/right.svg" alt="Вперед" className="pose-icon" />
+        </button>
       </div>
     </div>
   );
