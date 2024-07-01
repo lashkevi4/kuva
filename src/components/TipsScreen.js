@@ -9,7 +9,7 @@ function TipsScreen() {
     <div className="container">
       <div className="header">
         <BackButton />
-        <h1 className="title">Советы и хитрости</h1>
+        <h1 className="title">Tips & Tricks</h1>
       </div>
       <div className="grid">
         {categoriesTips.map(category => (

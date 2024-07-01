@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './StartScreen.css'; // Импортируем стили
+import './StartScreen.css';
 
 function StartScreen() {
   return (
@@ -9,8 +9,8 @@ function StartScreen() {
       <h2 className="titleLarge">POSING</h2>
       <p className="description">Your story, my lens, a timeless masterpiece awaits</p>
       <img src="/images/app/start-screen.png" alt="Posing App" className="image" />
-      <Link to="/categories" className="button">Позы</Link>
-      <Link to="/tips" className="button">Советы и хитрости</Link>
+      <Link to="/categories" className="button">Poses</Link>
+      <Link to="/tips" className="button">Tips & Tricks</Link>
     </div>
   );
 }

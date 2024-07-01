@@ -49,7 +49,7 @@ function TipDetailScreen() {
     <div className="container" {...handlers}>
       <div className="header">
         <button onClick={() => navigate('/tips')} className="backButton">
-          <img src="/images/app/back.svg" alt="Назад" className="backIcon" />
+          <img src="/images/app/back.svg" alt="back" className="backIcon" />
         </button>
         <h1 className="title">{category.name}</h1>
       </div>
@@ -65,14 +65,14 @@ function TipDetailScreen() {
           onClick={() => navigate(`/tips/${categoryId}/${getPrevTipId()}`)}
           className="navButton"
         >
-          <img src="/images/app/left.svg" alt="Назад" className="icon" />
+          <img src="/images/app/left.svg" alt="previous" className="icon" />
         </button>
         <span className="pageIndicator">{`${tipId}/${tips.length}`}</span>
         <button
           onClick={() => navigate(`/tips/${categoryId}/${getNextTipId()}`)}
           className="navButton"
         >
-          <img src="/images/app/right.svg" alt="Вперед" className="icon" />
+          <img src="/images/app/right.svg" alt="next" className="icon" />
         </button>
       </div>
       <div className="bottomSpace"></div>

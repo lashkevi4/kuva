@@ -6,7 +6,7 @@ function BackButton() {
 
   return (
     <button onClick={() => navigate('/')} style={styles.button}>
-      <img src="/images/app/back.svg" alt="Назад" style={styles.icon} />
+      <img src="/images/app/back.svg" alt="back" style={styles.icon} />
     </button>
   );
 }
@@ -20,7 +20,7 @@ const styles = {
     alignItems: 'center'
   },
   icon: {
-    width: '50px', // используем такой же размер, как у других иконок
+    width: '50px',
     height: '50px'
   }
 };

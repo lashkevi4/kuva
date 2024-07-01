@@ -54,7 +54,7 @@ function PoseDetailScreen() {
     <div className={`pose-container ${swipeDirection}`} {...handlers}>
       <div className="pose-header">
         <Link to={`/pose-preview/${categoryId}`} className="pose-backButton">
-          <img src="/images/app/back.svg" alt="Назад" className="pose-backIcon" />
+          <img src="/images/app/back.svg" alt="back" className="pose-backIcon" />
         </Link>
         <h1 className="pose-title">{category.name}</h1>
       </div>
@@ -70,11 +70,11 @@ function PoseDetailScreen() {
       </div>
       <div className="pose-navigation">
         <button onClick={() => navigate(`/pose-detail/${categoryId}/${prevPoseId}`)} className="pose-navButton">
-          <img src="/images/app/left.svg" alt="Назад" className="pose-icon" />
+          <img src="/images/app/left.svg" alt="back" className="pose-icon" />
         </button>
         <span className="pose-pageIndicator">{`${poseId}/${poses.length}`}</span>
         <button onClick={() => navigate(`/pose-detail/${categoryId}/${nextPoseId}`)} className="pose-navButton">
-          <img src="/images/app/right.svg" alt="Вперед" className="pose-icon" />
+          <img src="/images/app/right.svg" alt="back" className="pose-icon" />
         </button>
       </div>
     </div>
