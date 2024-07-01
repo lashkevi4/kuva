@@ -1,5 +1,6 @@
 .
 ├── README.md
+├── firebase.json
 ├── package-lock.json
 ├── package.json
 ├── public
@@ -56,25 +57,11 @@
 │   │   │   └── photo9.png
 │   │   ├── couples
 │   │   │   ├── data.json
-│   │   │   ├── photo.png
 │   │   │   ├── photo1.png
 │   │   │   ├── photo10.png
 │   │   │   ├── photo11.png
 │   │   │   ├── photo12.png
-│   │   │   ├── photo13.png
-│   │   │   ├── photo14.png
-│   │   │   ├── photo15.png
-│   │   │   ├── photo16.png
-│   │   │   ├── photo17.png
-│   │   │   ├── photo18.png
-│   │   │   ├── photo19.png
 │   │   │   ├── photo2.png
-│   │   │   ├── photo20.png
-│   │   │   ├── photo21.png
-│   │   │   ├── photo22.png
-│   │   │   ├── photo23.png
-│   │   │   ├── photo24.png
-│   │   │   ├── photo25.png
 │   │   │   ├── photo3.png
 │   │   │   ├── photo4.png
 │   │   │   ├── photo5.png
@@ -83,7 +70,17 @@
 │   │   │   ├── photo8.png
 │   │   │   └── photo9.png
 │   │   ├── glamour
-│   │   │   └── data.json
+│   │   │   ├── data.json
+│   │   │   ├── photo1.png
+│   │   │   ├── photo10.png
+│   │   │   ├── photo2.png
+│   │   │   ├── photo3.png
+│   │   │   ├── photo4.png
+│   │   │   ├── photo5.png
+│   │   │   ├── photo6.png
+│   │   │   ├── photo7.png
+│   │   │   ├── photo8.png
+│   │   │   └── photo9.png
 │   │   ├── groups
 │   │   │   ├── data.json
 │   │   │   ├── photo1.png
@@ -214,4 +211,4 @@
 │   └── reportWebVitals.js
 └── structure.txt
 
-30 directories, 185 files
+30 directories, 182 files

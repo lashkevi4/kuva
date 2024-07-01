@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
-import { categories } from '../categories';
+import { categoriesPoses } from '../categoriesPoses';
 import './PoseDetailScreen.css';
 
 function PoseDetailScreen() {
@@ -9,9 +9,9 @@ function PoseDetailScreen() {
   const [pose, setPose] = useState(null);
   const [poses, setPoses] = useState([]);
   const [swipeDirection, setSwipeDirection] = useState('');
-  const category = categories.find(c => c.id === parseInt(categoryId));
+  const category = categoriesPoses.find(c => c.id === parseInt(categoryId));
   const navigate = useNavigate();
-  const animationDuration = 500; // Время анимации в миллисекундах
+  const animationDuration = 500;
 
   useEffect(() => {
     if (category) {
