@@ -20,9 +20,9 @@ function PosePreviewScreen() {
     <div style={styles.container}>
       <div style={styles.header}>
         <Link to="/categories" style={styles.backButton}>
-          <img src="/images/app/back.svg" alt="Назад" style={styles.backIcon} />
+          <img src="/images/app/back.svg" alt="back" style={styles.backIcon} />
         </Link>
-        <h1 style={styles.title}>{category ? category.name : 'Категория'}</h1>
+        <h1 style={styles.title}>{category ? category.name : 'Category'}</h1>
       </div>
       <div style={styles.grid}>
         {poses.map(pose => (

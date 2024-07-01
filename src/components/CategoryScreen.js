@@ -8,9 +8,9 @@ function CategoryScreen() {
     <div className="container">
       <div className="header">
         <Link to="/" className="backButton">
-          <img src="/images/app/back.svg" alt="Назад" className="backIcon" />
+          <img src="/images/app/back.svg" alt="back" className="backIcon" />
         </Link>
-        <h1 className="title">Категории</h1>
+        <h1 className="title">Categories</h1>
       </div>
       <div className="grid">
         {categoriesPoses.map(category => (
