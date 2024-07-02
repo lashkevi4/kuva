@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import { categoriesTips } from '../categoriesTips';
@@ -6,23 +6,23 @@ import './TipDetailScreen.css';
 
 function TipDetailScreen() {
   const { categoryId, tipId } = useParams();
-  const [tip, setTip] = useState(null);
-  const [tips, setTips] = useState([]);
-  const category = categoriesTips.find(c => c.id === parseInt(categoryId));
+  const [state, setState] = useState({ tip: { title: '', content: [], image: '' }, tips: [] });
   const navigate = useNavigate();
 
+  const category = useMemo(
+    () => categoriesTips.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' },
+    [categoryId]
+  );
+
   useEffect(() => {
-    if (category) {
-      fetch(`/data/tips/${category.path}/data.json`)
-        .then(response => response.json())
-        .then(data => {
-          setTips(data.tips);
-          const tipData = data.tips.find(t => t.id === parseInt(tipId));
-          setTip(tipData);
-        })
-        .catch(error => console.error('Error loading data:', error));
-    }
-  }, [category, tipId]);
+    fetch(`/data/tips/${category.path}/data.json`)
+      .then(response => response.json())
+      .then(data => {
+        const tipData = data.tips.find(t => t.id === parseInt(tipId));
+        setState({ tip: tipData || { title: '', content: [], image: '' }, tips: data.tips });
+      })
+      .catch(error => console.error('Error loading data:', error));
+  }, [category.path, tipId]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => navigate(`/tips/${categoryId}/${getNextTipId()}`),
@@ -32,18 +32,14 @@ function TipDetailScreen() {
   });
 
   const getNextTipId = () => {
-    const currentIndex = tips.findIndex(t => t.id === parseInt(tipId));
-    return tips[(currentIndex + 1) % tips.length].id;
+    const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId));
+    return state.tips[(currentIndex + 1) % state.tips.length].id;
   };
 
   const getPrevTipId = () => {
-    const currentIndex = tips.findIndex(t => t.id === parseInt(tipId));
-    return tips[(currentIndex - 1 + tips.length) % tips.length].id;
+    const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId));
+    return state.tips[(currentIndex - 1 + state.tips.length) % state.tips.length].id;
   };
-
-  if (!tip || !category) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="container" {...handlers}>
@@ -54,9 +50,9 @@ function TipDetailScreen() {
         <h1 className="title">{category.name}</h1>
       </div>
       <div className="tip">
-        <img src={`/images/tips/${category.path}/${tip.image}`} alt={tip.title} className="image" />
-        <h2 className="tipTitle">{tip.title}</h2>
-        {tip.content.map((paragraph, index) => (
+        <img src={`/images/tips/${category.path}/${state.tip.image}`} alt={state.tip.title} className="image" />
+        <h2 className="tipTitle">{state.tip.title}</h2>
+        {state.tip.content.map((paragraph, index) => (
           <p key={index} className="tipContent">{paragraph}</p>
         ))}
       </div>
@@ -67,7 +63,7 @@ function TipDetailScreen() {
         >
           <img src="/images/app/left.svg" alt="previous" className="icon" />
         </button>
-        <span className="pageIndicator">{`${tipId}/${tips.length}`}</span>
+        <span className="pageIndicator">{`${tipId}/${state.tips.length}`}</span>
         <button
           onClick={() => navigate(`/tips/${categoryId}/${getNextTipId()}`)}
           className="navButton"
