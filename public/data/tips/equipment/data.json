@@ -2,42 +2,42 @@
   "tips": [
     {
       "id": 1,
-      "title": "Использование внешней вспышки",
+      "title": "Using an External Flash",
       "image": "equipment1.jpeg",
       "content": [
-        "Внешняя вспышка помогает контролировать освещение и избегать жестких теней. Расположите вспышку под углом к объекту съемки, чтобы создать мягкое и равномерное освещение. Используйте диффузор для смягчения света и создания более естественного вида."
+        "An external flash helps control lighting and avoid harsh shadows. Position the flash at an angle to the subject to create soft and even lighting. Use a diffuser to soften the light and create a more natural look."
       ]
     },
     {
       "id": 2,
-      "title": "Использование зонтиков для мягкого света",
+      "title": "Using Umbrellas for Soft Light",
       "image": "equipment2.jpeg",
       "content": [
-        "Зонтики помогают рассеивать свет, делая его мягче и более равномерным. Поместите зонтик между светом и объектом съемки, чтобы смягчить тени и создать приятное освещение. Это особенно полезно при съемке портретов в студии."
+        "Umbrellas help diffuse light, making it softer and more even. Place an umbrella between the light and the subject to soften shadows and create pleasant lighting. This is especially useful for studio portrait photography."
       ]
     },
     {
       "id": 3,
-      "title": "Использование штатива для стабильных снимков",
+      "title": "Using a Tripod for Stable Shots",
       "image": "equipment3.jpeg",
       "content": [
-        "Штатив обеспечивает стабильность камеры, что особенно важно при длительной экспозиции или при съемке в условиях низкой освещенности. Установите камеру на штатив и используйте пульт дистанционного управления или таймер, чтобы избежать дрожания камеры при нажатии на спуск."
+        "A tripod provides stability for the camera, which is especially important for long exposures or shooting in low light conditions. Set the camera on a tripod and use a remote control or timer to avoid camera shake when pressing the shutter."
       ]
     },
     {
       "id": 4,
-      "title": "Использование дрона для аэрофотосъемки",
+      "title": "Using a Drone for Aerial Photography",
       "image": "equipment4.jpeg",
       "content": [
-        "Дроны позволяют снимать с высоты, открывая новые перспективы и возможности для фотографий. Перед полетом ознакомьтесь с местными правилами и условиями полета. Убедитесь, что батареи заряжены, и проверьте оборудование перед взлетом."
+        "Drones allow you to shoot from above, opening new perspectives and possibilities for photography. Familiarize yourself with local rules and flight conditions before flying. Make sure the batteries are charged and check the equipment before takeoff."
       ]
     },
     {
       "id": 5,
-      "title": "Использование видеокамер для съемки видео",
+      "title": "Using Video Cameras for Video Recording",
       "image": "equipment5.jpeg",
       "content": [
-        "Видеокамеры предоставляют возможность записывать высококачественное видео. Используйте стабилизаторы или штативы для создания плавных и стабильных кадров. Настройте камеру на подходящие параметры экспозиции и баланса белого для получения наилучших результатов."
+        "Video cameras offer the ability to record high-quality video. Use stabilizers or tripods to create smooth and stable footage. Adjust the camera settings for suitable exposure and white balance to achieve the best results."
       ]
     }
   ]

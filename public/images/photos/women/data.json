@@ -1,0 +1,64 @@
+{
+  "photos": [
+    {
+      "id": 1,
+      "title": "Street Portrait on a Bench",
+      "image": "photo1.png",
+      "description": "Use natural lighting and place the model on a bench in a relaxed pose. Let the model interact with accessories like glasses or a bag to add dynamics to the shot."
+    },
+    {
+      "id": 2,
+      "title": "Portrait by the Fence",
+      "image": "photo2.png",
+      "description": "Position the model by the fence and use side lighting to create volumetric shadows. Ask the model to take a natural pose leaning on the fence to create a sense of relaxation."
+    },
+    {
+      "id": 3,
+      "title": "Dynamic Street Portrait",
+      "image": "photo3.png",
+      "description": "Use natural lighting and choose an urban background for contrast. Let the model take an active pose, such as sitting on a bench with legs outstretched, to add movement to the shot."
+    },
+    {
+      "id": 4,
+      "title": "Joyful Park Portrait",
+      "image": "photo4.png",
+      "description": "Place the model on a park bench and use natural lighting. Ask the model to smile and interact with the surroundings to create a joyful and lively shot."
+    },
+    {
+      "id": 5,
+      "title": "Stylish Street Portrait",
+      "image": "photo5.png",
+      "description": "Position the model by a city wall or building with an interesting texture. Use natural lighting and ask the model to take a confident pose to emphasize her style and clothing."
+    },
+    {
+      "id": 6,
+      "title": "Fashion Portrait in Red",
+      "image": "photo6.png",
+      "description": "Use side lighting to create dramatic shadows. Ask the model to pose leaning against a column or wall to highlight the silhouette and add depth to the shot."
+    },
+    {
+      "id": 7,
+      "title": "City Background Portrait",
+      "image": "photo7.png",
+      "description": "Choose an urban background with interesting architecture. Ask the model to take a confident pose leaning on a fence or wall to create a stylish and modern look."
+    },
+    {
+      "id": 8,
+      "title": "Fashion Portrait in the City Center",
+      "image": "photo8.png",
+      "description": "Use natural lighting and an urban background to create a stylish shot. Ask the model to take a pose with one leg forward and head slightly tilted to add dynamics and expressiveness."
+    },
+    {
+      "id": 9,
+      "title": "Elegant Street Portrait",
+      "image": "photo9.png",
+      "description": "Use natural lighting and an urban background with interesting architecture. Ask the model to take an elegant pose to highlight her style and clothing."
+    },
+    {
+      "id": 10,
+      "title": "Street Portrait in Black",
+      "image": "photo10.png",
+      "description": "Position the model against urban architecture and use natural lighting. Ask the model to take a confident pose leaning on a wall or column to create a stylish and modern shot."
+    }
+  ]
+}

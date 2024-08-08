@@ -2,42 +2,42 @@
   "tips": [
     {
       "id": 1,
-      "title": "Правильное освещение:",
+      "title": "Proper Lighting:",
       "image": "head1.jpeg",
       "content": [
-        "Освещение играет важную роль в портретной фотографии. Используйте мягкий, естественный свет для избежания жестких теней на лице. Если вы находитесь в помещении, попробуйте использовать окно как источник света."
+        "Lighting plays an important role in portrait photography. Use soft, natural light to avoid harsh shadows on the face. If you are indoors, try using a window as a light source."
       ]
     },
     {
       "id": 2,
-      "title": "Фокус на глазах:",
+      "title": "Focus on the Eyes:",
       "image": "head2.jpeg",
       "content": [
-        "Глаза - это “зеркало души”, и они должны быть основным фокусом при фотографировании головы. Убедитесь, что глаза четко сфокусированы, это придаст вашему портрету жизнь."
+        "The eyes are the “window to the soul,” and they should be the main focus when photographing the head. Ensure the eyes are sharply focused to bring life to your portrait."
       ]
     },
     {
       "id": 3,
-      "title": "Правильный угол:",
+      "title": "Correct Angle:",
       "image": "head3.jpeg",
       "content": [
-        "Угол съемки может существенно изменить восприятие лица. Съемка с уровня глаз обычно работает хорошо, но не бойтесь экспериментировать. Съемка сверху вниз может быть льстивой, а съемка снизу вверх может добавить драматизма."
+        "The angle of shooting can significantly change the perception of the face. Shooting at eye level usually works well, but don't be afraid to experiment. Shooting from above can be flattering, while shooting from below can add drama."
       ]
     },
     {
       "id": 4,
-      "title": "Выбор фона:",
+      "title": "Background Choice:",
       "image": "head4.jpeg",
       "content": [
-        "Фон может сильно повлиять на общее впечатление от фотографии. Выберите простой, нейтральный фон, чтобы акцентировать внимание на лице. Избегайте беспорядочных или отвлекающих фонов."
+        "The background can greatly affect the overall impression of the photograph. Choose a simple, neutral background to emphasize the face. Avoid cluttered or distracting backgrounds."
       ]
     },
     {
       "id": 5,
-      "title": "Экспрессия лица:",
+      "title": "Facial Expression:",
       "image": "head5.jpeg",
       "content": [
-        "Экспрессия лица человека может рассказать историю. Попросите модель расслабиться и быть естественной. Попробуйте зафиксировать различные эмоции для создания интересных и выразительных портретов."
+        "A person's facial expression can tell a story. Ask the model to relax and be natural. Try to capture various emotions to create interesting and expressive portraits."
       ]
     }
   ]

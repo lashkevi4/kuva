@@ -6,7 +6,7 @@ import './PoseDetailScreen.css';
 
 function PoseDetailScreen() {
   const { categoryId, poseId } = useParams();
-  const [state, setState] = useState({ pose: { description: '', image: '' }, poses: [] });
+  const [state, setState] = useState({ pose: { title: '', description: '', image: '' }, poses: [] });
   const [swipeDirection, setSwipeDirection] = useState('');
   const navigate = useNavigate();
   const animationDuration = 500;
@@ -17,11 +17,11 @@ function PoseDetailScreen() {
   );
 
   useEffect(() => {
-    fetch(`/images/${category.path}/data.json`)
+    fetch(`/images/photos/${category.path}/data.json`)
       .then(response => response.json())
       .then(data => {
-        const poseData = data.find(p => p.id === parseInt(poseId));
-        setState({ pose: poseData || { description: '', image: '' }, poses: data });
+        const poseData = data.photos.find(p => p.id === parseInt(poseId)); // Изменение здесь
+        setState({ pose: poseData || { title: '', description: '', image: '' }, poses: data.photos }); // Изменение здесь
       })
       .catch(error => console.error('Error loading data:', error));
   }, [category.path, poseId]);
@@ -60,7 +60,8 @@ function PoseDetailScreen() {
           animationName: swipeDirection === 'left' ? 'swipeLeft' : swipeDirection === 'right' ? 'swipeRight' : 'none',
         }}
       >
-        <img src={`/images/${category.path}/${state.pose.image}`} alt={state.pose.description} className="pose-image" />
+        <img src={`/images/photos/${category.path}/${state.pose.image}`} alt={state.pose.description} className="pose-image" />
+        <h2 className="pose-title">{state.pose.title}</h2> {/* Добавлено */}
         <p className="pose-description">{state.pose.description}</p>
       </div>
       <div className="pose-navigation">
