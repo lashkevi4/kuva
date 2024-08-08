@@ -9,9 +9,9 @@ function PosePreviewScreen() {
 
   useEffect(() => {
     if (category) {
-      fetch(`/images/${category.path}/data.json`)
+      fetch(`/images/photos/${category.path}/data.json`)
         .then(response => response.json())
-        .then(data => setPoses(data))
+        .then(data => setPoses(data.photos)) // Изменение здесь
         .catch(error => console.error('Error loading data:', error));
     }
   }, [category]);
@@ -27,7 +27,7 @@ function PosePreviewScreen() {
       <div style={styles.grid}>
         {poses.map(pose => (
           <Link to={`/pose-detail/${categoryId}/${pose.id}`} key={pose.id} style={styles.item}>
-            <img src={`/images/${category.path}/${pose.image}`} alt={pose.description} style={styles.image} />
+            <img src={`/images/photos/${category.path}/${pose.image}`} alt={pose.description} style={styles.image} />
           </Link>
         ))}
       </div>

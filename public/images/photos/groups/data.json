@@ -1,0 +1,64 @@
+{
+  "photos": [
+    {
+      "id": 1,
+      "title": "Family Portrait",
+      "image": "photo1.png",
+      "description": "Seat the parents on a stool holding the baby. Position the older children standing beside them to create a cozy family atmosphere."
+    },
+    {
+      "id": 2,
+      "title": "Group Circle Shot",
+      "image": "photo2.png",
+      "description": "Ask the group to stand in a circle and lean in so their heads touch, creating a dynamic and fun shot."
+    },
+    {
+      "id": 3,
+      "title": "Casual Friends Gathering",
+      "image": "photo3.png",
+      "description": "Seat one person with a laptop and arrange the others around them, creating a friendly conversation atmosphere."
+    },
+    {
+      "id": 4,
+      "title": "Outdoor Chat",
+      "image": "photo4.png",
+      "description": "Position the models next to a wall and give them drinks. They can chat freely, creating a relaxed atmosphere."
+    },
+    {
+      "id": 5,
+      "title": "Kids Party Fun",
+      "image": "photo5.png",
+      "description": "Have the children stand in a row, wearing party hats and throwing confetti to create a fun and festive atmosphere."
+    },
+    {
+      "id": 6,
+      "title": "Wedding Pyramid",
+      "image": "photo6.png",
+      "description": "Create a pyramid by asking the men to get on all fours and the bride to stand on top. This adds originality and fun to the shot."
+    },
+    {
+      "id": 7,
+      "title": "Friends Lying Down",
+      "image": "photo7.png",
+      "description": "Ask the group to lie on the ground in a circle with their heads touching in the center. This creates an intimate and connected feel."
+    },
+    {
+      "id": 8,
+      "title": "Staircase Formation",
+      "image": "photo8.png",
+      "description": "Arrange the group in a line on the stairs, each person’s arms spread out, creating a visually interesting and unified look."
+    },
+    {
+      "id": 9,
+      "title": "Sleepy Circle",
+      "image": "photo9.png",
+      "description": "Have the group stand close together with their heads tilted and eyes closed, creating a serene and peaceful atmosphere."
+    },
+    {
+      "id": 10,
+      "title": "Close Trio",
+      "image": "photo10.png",
+      "description": "Position three people close together, their heads slightly tilted, to create a strong and intimate portrait."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "photos": [
+    {
+      "id": 1,
+      "title": "Strong Confidence",
+      "image": "photo1.png",
+      "description": "Position the model standing straight on the street to emphasize confidence and strictness. Ensure the model's hands are relaxed at their sides, and their gaze is directed forward."
+    },
+    {
+      "id": 2,
+      "title": "Relaxed on the Bench",
+      "image": "photo2.png",
+      "description": "Seat the model on a bench in a relaxed pose, with one hand resting down and the other on the backrest. This pose will create an atmosphere of calmness and comfort."
+    },
+    {
+      "id": 3,
+      "title": "Leaning on the Wall",
+      "image": "photo3.png",
+      "description": "Position the model standing with support on the wall, one leg slightly bent. The hands can be crossed on the chest or one hand in the pocket, and the other on the wall, to create a confident and stylish image."
+    },
+    {
+      "id": 4,
+      "title": "Elegant Gentleman",
+      "image": "photo4.png",
+      "description": "Seat the model on the steps, one hand resting on the knee, the other free. This pose emphasizes the model's elegance and sophistication."
+    },
+    {
+      "id": 5,
+      "title": "Stylish Relaxation",
+      "image": "photo5.png",
+      "description": "Seat the model at a table with a cup in their hands. The model can lean back slightly and cross their legs, creating a stylish and relaxed atmosphere."
+    },
+    {
+      "id": 6,
+      "title": "Modern Elegance",
+      "image": "photo6.png",
+      "description": "Seat the model on the steps in a relaxed pose, one leg extended forward. Hands can be placed on the knees or slightly rested on one hand. This emphasizes the model's modern style and confidence."
+    },
+    {
+      "id": 7,
+      "title": "Confident Smile",
+      "image": "photo7.png",
+      "description": "Position the model against an interesting wall, raising one hand to the chin. Ensure the model smiles, creating a joyful and confident image."
+    },
+    {
+      "id": 8,
+      "title": "Contemporary Style",
+      "image": "photo8.png",
+      "description": "Position the model by the railing, slightly leaning on it. One hand can be in the pocket, the other freely hanging down. This pose emphasizes the model's style and confidence."
+    },
+    {
+      "id": 9,
+      "title": "Morning Coffee",
+      "image": "photo9.png",
+      "description": "Seat the model by the window with a cup of coffee in their hands. The model can sit on the windowsill or on a chair, creating a cozy atmosphere and emphasizing confidence."
+    },
+    {
+      "id": 10,
+      "title": "Relaxed Style",
+      "image": "photo10.png",
+      "description": "Seat the model at a table in a café. The model can sit relaxed, with one hand on the table and the other holding a glass. This pose emphasizes the model's relaxation and ease."
+    }
+  ]
+}

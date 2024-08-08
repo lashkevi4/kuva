@@ -2,42 +2,42 @@
   "tips": [
     {
       "id": 1,
-      "title": "Используйте правило третей",
+      "title": "Use the Rule of Thirds",
       "image": "composition1.jpeg",
       "content": [
-        "Разделите кадр на девять равных частей с помощью двух горизонтальных и двух вертикальных линий. Расположите важные элементы вдоль этих линий или на их пересечениях. Это поможет создать сбалансированную и привлекательную композицию."
+        "Divide the frame into nine equal parts using two horizontal and two vertical lines. Place important elements along these lines or at their intersections. This will help create a balanced and appealing composition."
       ]
     },
     {
       "id": 2,
-      "title": "Создайте глубину с помощью переднего и заднего планов",
+      "title": "Create Depth with Foreground and Background",
       "image": "composition2.jpeg",
       "content": [
-        "Добавьте элементы на передний, средний и задний планы, чтобы создать ощущение глубины. Это придаст вашим фотографиям трехмерность и сделает их более интересными. Используйте широкий угол, чтобы захватить больше элементов."
+        "Add elements to the foreground, middle ground, and background to create a sense of depth. This will make your photographs three-dimensional and more interesting. Use a wide angle to capture more elements."
       ]
     },
     {
       "id": 3,
-      "title": "Ведущие линии",
+      "title": "Leading Lines",
       "image": "composition3.jpeg",
       "content": [
-        "Ищите линии в кадре, которые направляют взгляд зрителя к главному объекту. Это могут быть дороги, реки, ограждения или тени. Ведущие линии помогают создать динамику и направить внимание на важные элементы композиции."
+        "Look for lines within the frame that direct the viewer's eye to the main subject. These could be roads, rivers, fences, or shadows. Leading lines help create dynamics and guide attention to important elements of the composition."
       ]
     },
     {
       "id": 4,
-      "title": "Симметрия и баланс",
+      "title": "Symmetry and Balance",
       "image": "composition4.jpeg",
       "content": [
-        "Используйте симметрию, чтобы создать гармоничную и сбалансированную композицию. Симметричные кадры часто выглядят эстетически приятно. Также старайтесь сбалансировать кадр по цвету и форме, чтобы он выглядел уравновешенно."
+        "Use symmetry to create a harmonious and balanced composition. Symmetrical frames often look aesthetically pleasing. Also, try to balance the frame by color and shape to make it look stable."
       ]
     },
     {
       "id": 5,
-      "title": "Используйте кадрирование в кадре",
+      "title": "Use Framing Within the Frame",
       "image": "composition5.jpeg",
       "content": [
-        "Ищите естественные элементы, которые могут обрамить ваш главный объект. Это могут быть арки, окна, ветви деревьев и другие элементы. Кадрирование в кадре помогает выделить основной объект и придать снимку глубину и фокус."
+        "Look for natural elements that can frame your main subject. These could be arches, windows, tree branches, and other elements. Framing within the frame helps to highlight the main subject and add depth and focus to the shot."
       ]
     }
   ]

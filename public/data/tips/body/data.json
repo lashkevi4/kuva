@@ -2,42 +2,42 @@
   "tips": [
     {
       "id": 1,
-      "title": "Поза с переносом веса на одну ногу",
+      "title": "Pose with Weight Shifted to One Leg",
       "image": "body1.jpeg",
       "content": [
-        "Перенесите вес на одну ногу, слегка согнув другую. Это придаст вашей позе непринужденность и естественность, создавая элегантный и расслабленный образ. Держите плечи расслабленными, а руки свободными или на бедрах."
+        "Shift your weight onto one leg, slightly bending the other. This will give your pose a casual and natural look, creating an elegant and relaxed appearance. Keep your shoulders relaxed and your hands free or on your hips."
       ]
     },
     {
       "id": 2,
-      "title": "Поворот тела для динамики",
+      "title": "Body Twist for Dynamism",
       "image": "body2.jpeg",
       "content": [
-        "Поверните тело немного в сторону, оставляя лицо повернутым к камере. Это добавит динамики и интереса вашему образу. Держите спину прямо, а плечи расслабленными для естественной и уверенной позы."
+        "Twist your body slightly to the side, keeping your face turned towards the camera. This will add dynamism and interest to your look. Keep your back straight and your shoulders relaxed for a natural and confident pose."
       ]
     },
     {
       "id": 3,
-      "title": "Руки на бедрах",
+      "title": "Hands on Hips",
       "image": "body3.jpeg",
       "content": [
-        "Встаньте прямо, положив руки на бедра. Это создаст уверенный и собранный образ, подчеркивая вашу осанку и стройность. Разверните плечи назад и держите голову высоко, чтобы поза выглядела сильной и уверенной."
+        "Stand straight with your hands on your hips. This will create a confident and collected look, emphasizing your posture and slimness. Roll your shoulders back and hold your head high to make the pose look strong and confident."
       ]
     },
     {
       "id": 4,
-      "title": "Одна нога впереди",
+      "title": "One Leg Forward",
       "image": "body4.jpeg",
       "content": [
-        "Поставьте одну ногу чуть впереди другой, создавая ощущение движения и динамики. Держите вес на задней ноге для баланса. Это поможет создать более интересную и активную композицию."
+        "Place one leg slightly ahead of the other, creating a sense of movement and dynamism. Keep your weight on the back leg for balance. This will help create a more interesting and active composition."
       ]
     },
     {
       "id": 5,
-      "title": "Наклон тела вперед",
+      "title": "Lean Forward",
       "image": "body5.jpeg",
       "content": [
-        "Наклоните тело немного вперед, сохраняя спину прямой. Это добавит глубины и интерактивности вашему образу. Руки могут быть расслаблены или взаимодействовать с предметами, чтобы добавить естественности."
+        "Lean your body slightly forward, keeping your back straight. This will add depth and interactivity to your look. Your hands can be relaxed or interacting with objects to add naturalness."
       ]
     }
   ]
