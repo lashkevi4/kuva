@@ -1,0 +1,15 @@
+[debug] [2024-08-08T17:46:24.953Z] ----------------------------------------------------------------------
+[debug] [2024-08-08T17:46:24.957Z] Command:       /opt/homebrew/Cellar/node/20.8.0/bin/node /opt/homebrew/bin/firebase deploy
+[debug] [2024-08-08T17:46:24.958Z] CLI Version:   12.4.3
+[debug] [2024-08-08T17:46:24.958Z] Platform:      darwin
+[debug] [2024-08-08T17:46:24.958Z] Node Version:  v20.8.0
+[debug] [2024-08-08T17:46:24.958Z] Time:          Thu Aug 08 2024 21:46:24 GMT+0400 (Грузия, стандартное время)
+[debug] [2024-08-08T17:46:24.958Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-08-08T17:46:24.960Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2024-08-08T17:46:25.027Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-08-08T17:46:25.027Z] > authorizing via signed-in user (lashkevi4@gmail.com)
+[debug] [2024-08-08T17:46:25.027Z] [iam] checking project finn-poses for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-08-08T17:46:25.028Z] > refreshing access token with scopes: []
+[debug] [2024-08-08T17:46:25.028Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-08-08T17:46:25.028Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
