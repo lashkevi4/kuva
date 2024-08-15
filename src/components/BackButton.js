@@ -1,28 +1,18 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; //подключаем хук useNavigate для управления маршрутизацией
+import './BackButton.css';
 
 function BackButton() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //хук для навигации
 
   return (
-    <button onClick={() => navigate('/')} style={styles.button}>
-      <img src="/images/app/back.svg" alt="back" style={styles.icon} />
+    <button onClick={() => navigate('/')} className="back-button"> {/*создаём кнопку, перенаправляет на start page*/}
+
+      <img src="/images/app/back.svg" alt="back" className="back-icon" /> {/*добавляем изображение с иконкой "back"*/}
+
     </button>
   );
 }
 
-const styles = {
-  button: {
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center'
-  },
-  icon: {
-    width: '50px',
-    height: '50px'
-  }
-};
-
 export default BackButton;
+// экспортирую компонент, для использования в других частях приложения
