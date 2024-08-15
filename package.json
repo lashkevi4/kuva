@@ -5,6 +5,7 @@
   "dependencies": {
     "common-tags": "^1.8.2",
     "cross-spawn": "^7.0.3",
+    "firebase": "^10.13.0",
     "jest-worker": "^29.7.0",
     "postcss": "^8.4.41",
     "react": "^18.3.1",
