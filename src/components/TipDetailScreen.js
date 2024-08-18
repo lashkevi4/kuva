@@ -22,12 +22,15 @@ function TipDetailScreen() {
       .catch(error => console.error('Error loading data:', error)); // выводим ошибку в консоль
   }, [category.path, tipId]);
 
-  // определяем id следующего и предыдущего совета
+  // Находим индекс текущего совета и возвращаем ID следующего совета.
+  // Если текущий совет последний, возвращаем ID первого совета
   const getNextTipId = () => {
     const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId));
     return state.tips[(currentIndex + 1) % state.tips.length].id;
   };
 
+  // Находим индекс текущего совета и возвращаем ID предыдущего совета.
+  // Если текущий совет первый, возвращаем ID последнего совета.
   const getPrevTipId = () => {
     const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId));
     return state.tips[(currentIndex - 1 + state.tips.length) % state.tips.length].id;

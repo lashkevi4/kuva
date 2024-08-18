@@ -1,17 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// импортируем компонент link, возволяет осуществлять навигацию между стр. без перезагрузки
+// Импортируем Link для навигации между страницами без перезагрузки страницы.
 import { categoriesPoses } from '../categoriesPoses';
-// подключаю categoriesPoses, содержит данные о категориях
+// Импортируем данные о категориях из categoriesPoses.
 import './CategoryScreen.css';
+// Подключаем CSS файл для стилизации компонента.
 
 function CategoryScreen() {
-  // определяем функцию-компонент CategoryScreen, которая будет отображать экран с категориями.
+  // Определяем компонент CategoryScreen, который отвечает за отображение категорий.
 
   return (
     <div className="container">
+      {/* Основной контейнер компонента */}
 
       <div className="header">
+        {/* Заголовок страницы с кнопкой назад */}
         <Link to="/" className="backButton">
           <img src="/images/app/back.svg" alt="back" className="backIcon" />
         </Link>
@@ -20,15 +23,16 @@ function CategoryScreen() {
       </div>
 
       <div className="grid">
+        {/* Сетка для отображения категорий */}
         {categoriesPoses.map(category => (
           <Link to={`/pose-preview/${category.id}`} key={category.id} className="item">
-            {/* создём ссылки для каждой категории, используя ID */}
+            {/* Создаем ссылку для каждой категории, используем уникальный ID в качестве ключа */}
 
             <img src={`/images/app/${category.icon}`} alt={category.name} className="icon" />
-            {/* отображаем иконку категории, путь создаёится динамически */}
+            {/* Отображаем иконку категории */}
 
             <span className="text">{category.name}</span>
-            {/* под иконкой название категории. */}
+            {/* Отображаем название категории */}
           </Link>
         ))}
       </div>
@@ -37,4 +41,4 @@ function CategoryScreen() {
 }
 
 export default CategoryScreen;
-// экспортирую компонент, для использования в других частях приложения
+// Экспортируем компонент для использования в других частях приложения

@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState, useMemo } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { categoriesPoses } from '../categoriesPoses';
 
 function PosePreviewScreen() {
-  const { categoryId } = useParams(); // получаю id категории из параметров url
-  const [poses, setPoses] = useState([]); // использую useState для хранения списка поз
+  // Оптимизация: запоминаем категорию, чтобы избежать повторных вычислений
+  const { categoryId } = useParams();
+  const category = useMemo(() => categoriesPoses.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' }, [categoryId]);
+  const [poses, setPoses] = useState([]);
 
-  // находим нужную категорию по id
-  const category = categoriesPoses.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' };
-
-  // загружаем данные с позами при монтировании компонента
+  // Загружаем список поз при изменении пути категории
   useEffect(() => {
-    if (category) {
-      fetch(`/images/photos/${category.path}/data.json`)
-        .then(response => response.json()) // преобразую ответ в JSON
-        .then(data => setPoses(data.photos)) // сохраняю данные в состояние
-        .catch(error => console.error('Error loading data:', error)); // вывожу ошибку в консоль
-    }
-  }, [category]);
+    fetch(`/images/photos/${category.path}/data.json`)
+      .then(response => response.json())
+      .then(data => setPoses(data.photos))
+      .catch(error => console.error('Error loading data:', error));
+  }, [category.path]);
 
   return (
     <div style={styles.container}>
@@ -25,12 +22,11 @@ function PosePreviewScreen() {
         <Link to="/categories" style={styles.backButton}>
           <img src="/images/app/back.svg" alt="back" style={styles.backIcon} />
         </Link>
-        <h1 style={styles.title}>{category.name}</h1> {/* название категории */}
+        <h1 style={styles.title}>{category.name}</h1>
       </div>
       <div style={styles.grid}>
         {poses.map(pose => (
           <Link to={`/pose-detail/${categoryId}/${pose.id}`} key={pose.id} style={styles.item}>
-            {/* изображение позы, загружаю путь к файлу */}
             <img src={`/images/photos/${category.path}/${pose.image}`} alt={pose.description} style={styles.image} />
           </Link>
         ))}

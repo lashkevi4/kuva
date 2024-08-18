@@ -6,6 +6,7 @@ import PosePreviewScreen from './components/PosePreviewScreen';
 import PoseDetailScreen from './components/PoseDetailScreen';
 import TipsScreen from './components/TipsScreen';
 import TipDetailScreen from './components/TipDetailScreen';
+import FavoritesScreen from './components/FavoritesScreen';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/pose-detail/:categoryId/:poseId" element={<PoseDetailScreen />} />
       <Route path="/tips" element={<TipsScreen />} />
       <Route path="/tips/:categoryId/:tipId" element={<TipDetailScreen />} />
+      <Route path="/favorites" element={<FavoritesScreen />} />
     </Routes>
   );
 }

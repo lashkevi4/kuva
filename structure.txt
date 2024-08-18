@@ -1,6 +1,8 @@
 .
 ├── README.md
+├── firebase-debug 2.log
 ├── firebase.json
+├── package-lock 5.json
 ├── package-lock.json
 ├── package.json
 ├── public
@@ -24,7 +26,6 @@
 │   ├── images
 │   │   ├── app
 │   │   │   ├── back.svg
-│   │   │   ├── back — копия.svg
 │   │   │   ├── basic.svg
 │   │   │   ├── body.svg
 │   │   │   ├── children.svg
@@ -40,147 +41,144 @@
 │   │   │   ├── men.svg
 │   │   │   ├── right.svg
 │   │   │   ├── start-screen.png
-│   │   │   ├── start-screen.webp
 │   │   │   ├── wedding.svg
 │   │   │   └── women.svg
-│   │   ├── children
-│   │   │   ├── data.json
-│   │   │   ├── photo1.png
-│   │   │   ├── photo10.png
-│   │   │   ├── photo2.png
-│   │   │   ├── photo3.png
-│   │   │   ├── photo4.png
-│   │   │   ├── photo5.png
-│   │   │   ├── photo6.png
-│   │   │   ├── photo7.png
-│   │   │   ├── photo8.png
-│   │   │   └── photo9.png
-│   │   ├── couples
-│   │   │   ├── data.json
-│   │   │   ├── photo1.png
-│   │   │   ├── photo10.png
-│   │   │   ├── photo11.png
-│   │   │   ├── photo12.png
-│   │   │   ├── photo2.png
-│   │   │   ├── photo3.png
-│   │   │   ├── photo4.png
-│   │   │   ├── photo5.png
-│   │   │   ├── photo6.png
-│   │   │   ├── photo7.png
-│   │   │   ├── photo8.png
-│   │   │   └── photo9.png
-│   │   ├── glamour
-│   │   │   ├── data.json
-│   │   │   ├── photo1.png
-│   │   │   ├── photo10.png
-│   │   │   ├── photo2.png
-│   │   │   ├── photo3.png
-│   │   │   ├── photo4.png
-│   │   │   ├── photo5.png
-│   │   │   ├── photo6.png
-│   │   │   ├── photo7.png
-│   │   │   ├── photo8.png
-│   │   │   └── photo9.png
-│   │   ├── groups
-│   │   │   ├── data.json
-│   │   │   ├── photo1.png
-│   │   │   ├── photo10.png
-│   │   │   ├── photo2.png
-│   │   │   ├── photo3.png
-│   │   │   ├── photo4.png
-│   │   │   ├── photo5.png
-│   │   │   ├── photo6.png
-│   │   │   ├── photo7.png
-│   │   │   ├── photo8.png
-│   │   │   └── photo9.png
-│   │   ├── men
-│   │   │   ├── data.json
-│   │   │   ├── photo.png
-│   │   │   ├── photo1.png
-│   │   │   ├── photo10.png
-│   │   │   ├── photo11.png
-│   │   │   ├── photo12.png
-│   │   │   ├── photo13.png
-│   │   │   ├── photo14.png
-│   │   │   ├── photo2.png
-│   │   │   ├── photo3.png
-│   │   │   ├── photo4.png
-│   │   │   ├── photo5.png
-│   │   │   ├── photo6.png
-│   │   │   ├── photo7.png
-│   │   │   ├── photo8.png
-│   │   │   └── photo9.png
-│   │   ├── tips
-│   │   │   ├── basic
-│   │   │   │   ├── basic1.jpeg
-│   │   │   │   ├── basic2.jpeg
-│   │   │   │   ├── basic3.jpeg
-│   │   │   │   ├── basic4.jpeg
-│   │   │   │   └── basic5.jpeg
-│   │   │   ├── body
-│   │   │   │   ├── body1.jpeg
-│   │   │   │   ├── body2.jpeg
-│   │   │   │   ├── body3.jpeg
-│   │   │   │   ├── body4.jpeg
-│   │   │   │   └── body5.jpeg
-│   │   │   ├── composition
-│   │   │   │   ├── composition1.jpeg
-│   │   │   │   ├── composition2.jpeg
-│   │   │   │   ├── composition3.jpeg
-│   │   │   │   ├── composition4.jpeg
-│   │   │   │   ├── composition5.jpeg
-│   │   │   │   └── compostion3.jpeg
-│   │   │   ├── equipment
-│   │   │   │   ├── equipment1.jpeg
-│   │   │   │   ├── equipment2.jpeg
-│   │   │   │   ├── equipment3.jpeg
-│   │   │   │   ├── equipment4.jpeg
-│   │   │   │   └── equipment5.jpeg
-│   │   │   ├── hands
-│   │   │   │   ├── hands1.jpeg
-│   │   │   │   ├── hands2.jpeg
-│   │   │   │   ├── hands3.jpeg
-│   │   │   │   ├── hands4.jpeg
-│   │   │   │   └── hands5.jpeg
-│   │   │   ├── head
-│   │   │   │   ├── head1.jpeg
-│   │   │   │   ├── head2.jpeg
-│   │   │   │   ├── head3.jpeg
-│   │   │   │   ├── head4.jpeg
-│   │   │   │   └── head5.jpeg
-│   │   │   └── legs
-│   │   │       ├── legs1.jpeg
-│   │   │       ├── legs2.jpeg
-│   │   │       ├── legs3.jpeg
-│   │   │       ├── legs4.jpeg
-│   │   │       └── legs5.jpeg
-│   │   ├── wedding
-│   │   │   ├── data.json
-│   │   │   ├── photo1.png
-│   │   │   ├── photo10.png
-│   │   │   ├── photo2.png
-│   │   │   ├── photo3.png
-│   │   │   ├── photo4.png
-│   │   │   ├── photo5.png
-│   │   │   ├── photo6.png
-│   │   │   ├── photo7.png
-│   │   │   ├── photo8.png
-│   │   │   └── photo9.png
-│   │   └── women
-│   │       ├── data.json
-│   │       ├── photo.png
-│   │       ├── photo1.png
-│   │       ├── photo10.png
-│   │       ├── photo11.png
-│   │       ├── photo12.png
-│   │       ├── photo2.png
-│   │       ├── photo3.png
-│   │       ├── photo4.png
-│   │       ├── photo5.png
-│   │       ├── photo6.png
-│   │       ├── photo7.png
-│   │       ├── photo8.png
-│   │       └── photo9.png
+│   │   ├── photos
+│   │   │   ├── children
+│   │   │   │   ├── data.json
+│   │   │   │   ├── photo1.png
+│   │   │   │   ├── photo10.png
+│   │   │   │   ├── photo2.png
+│   │   │   │   ├── photo3.png
+│   │   │   │   ├── photo4.png
+│   │   │   │   ├── photo5.png
+│   │   │   │   ├── photo6.png
+│   │   │   │   ├── photo7.png
+│   │   │   │   ├── photo8.png
+│   │   │   │   └── photo9.png
+│   │   │   ├── couples
+│   │   │   │   ├── data.json
+│   │   │   │   ├── photo1.png
+│   │   │   │   ├── photo10.png
+│   │   │   │   ├── photo11.png
+│   │   │   │   ├── photo12.png
+│   │   │   │   ├── photo2.png
+│   │   │   │   ├── photo3.png
+│   │   │   │   ├── photo4.png
+│   │   │   │   ├── photo5.png
+│   │   │   │   ├── photo6.png
+│   │   │   │   ├── photo7.png
+│   │   │   │   ├── photo8.png
+│   │   │   │   └── photo9.png
+│   │   │   ├── groups
+│   │   │   │   ├── data.json
+│   │   │   │   ├── photo1.png
+│   │   │   │   ├── photo10.png
+│   │   │   │   ├── photo2.png
+│   │   │   │   ├── photo3.png
+│   │   │   │   ├── photo4.png
+│   │   │   │   ├── photo5.png
+│   │   │   │   ├── photo6.png
+│   │   │   │   ├── photo7.png
+│   │   │   │   ├── photo8.png
+│   │   │   │   └── photo9.png
+│   │   │   ├── men
+│   │   │   │   ├── data.json
+│   │   │   │   ├── photo.png
+│   │   │   │   ├── photo1.png
+│   │   │   │   ├── photo10.png
+│   │   │   │   ├── photo11.png
+│   │   │   │   ├── photo12.png
+│   │   │   │   ├── photo13.png
+│   │   │   │   ├── photo14.png
+│   │   │   │   ├── photo2.png
+│   │   │   │   ├── photo3.png
+│   │   │   │   ├── photo4.png
+│   │   │   │   ├── photo5.png
+│   │   │   │   ├── photo6.png
+│   │   │   │   ├── photo7.png
+│   │   │   │   ├── photo8.png
+│   │   │   │   └── photo9.png
+│   │   │   ├── wedding
+│   │   │   │   ├── data.json
+│   │   │   │   ├── photo1.png
+│   │   │   │   ├── photo10.png
+│   │   │   │   ├── photo2.png
+│   │   │   │   ├── photo3.png
+│   │   │   │   ├── photo4.png
+│   │   │   │   ├── photo5.png
+│   │   │   │   ├── photo6.png
+│   │   │   │   ├── photo7.png
+│   │   │   │   ├── photo8.png
+│   │   │   │   └── photo9.png
+│   │   │   └── women
+│   │   │       ├── data.json
+│   │   │       ├── photo.png
+│   │   │       ├── photo1.png
+│   │   │       ├── photo10.png
+│   │   │       ├── photo11.png
+│   │   │       ├── photo12.png
+│   │   │       ├── photo2.png
+│   │   │       ├── photo3.png
+│   │   │       ├── photo4.png
+│   │   │       ├── photo5.png
+│   │   │       ├── photo6.png
+│   │   │       ├── photo7.png
+│   │   │       ├── photo8.png
+│   │   │       └── photo9.png
+│   │   └── tips
+│   │       ├── basic
+│   │       │   ├── basic1-1.jpg
+│   │       │   ├── basic1.jpeg
+│   │       │   ├── basic2 2.jpeg
+│   │       │   ├── basic2.jpeg
+│   │       │   ├── basic3 2.jpeg
+│   │       │   ├── basic3-1.jpeg
+│   │       │   ├── basic3.jpeg
+│   │       │   ├── basic4 2.jpeg
+│   │       │   ├── basic4-1.jpeg
+│   │       │   ├── basic4.jpeg
+│   │       │   ├── basic5 2.jpeg
+│   │       │   └── basic5.jpeg
+│   │       ├── body
+│   │       │   ├── body1.jpeg
+│   │       │   ├── body2.jpeg
+│   │       │   ├── body3.jpeg
+│   │       │   ├── body4.jpeg
+│   │       │   ├── body5 2.jpeg
+│   │       │   └── body5.jpeg
+│   │       ├── composition
+│   │       │   ├── composition1.jpeg
+│   │       │   ├── composition2.jpeg
+│   │       │   ├── composition3.jpeg
+│   │       │   ├── composition4.jpeg
+│   │       │   ├── composition5.jpeg
+│   │       │   └── compostion3.jpeg
+│   │       ├── equipment
+│   │       │   ├── equipment1.jpeg
+│   │       │   ├── equipment2.jpeg
+│   │       │   ├── equipment3.jpeg
+│   │       │   ├── equipment4.jpeg
+│   │       │   └── equipment5.jpeg
+│   │       ├── hands
+│   │       │   ├── hands1.jpeg
+│   │       │   ├── hands2.jpeg
+│   │       │   ├── hands3.jpeg
+│   │       │   ├── hands4.jpeg
+│   │       │   └── hands5.jpeg
+│   │       ├── head
+│   │       │   ├── head1.jpeg
+│   │       │   ├── head2.jpeg
+│   │       │   ├── head3.jpeg
+│   │       │   ├── head4.jpeg
+│   │       │   └── head5.jpeg
+│   │       └── legs
+│   │           ├── legs1.jpeg
+│   │           ├── legs2.jpeg
+│   │           ├── legs3.jpeg
+│   │           ├── legs4 2.jpeg
+│   │           ├── legs4.jpeg
+│   │           └── legs5.jpeg
 │   ├── index.html
 │   ├── logo192.png
 │   ├── logo512.png
@@ -188,27 +186,30 @@
 │   └── robots.txt
 ├── src
 │   ├── App.js
-│   ├── categories.js
 │   ├── categoriesPoses.js
 │   ├── categoriesTips.js
 │   ├── components
+│   │   ├── BackButton.css
 │   │   ├── BackButton.js
 │   │   ├── CategoryScreen.css
 │   │   ├── CategoryScreen.js
+│   │   ├── FavoritesScreen.css
+│   │   ├── FavoritesScreen.js
+│   │   ├── GoogleSignIn.js
 │   │   ├── PoseDetailScreen.css
 │   │   ├── PoseDetailScreen.js
-│   │   ├── PosePreviewScreen.css
 │   │   ├── PosePreviewScreen.js
 │   │   ├── StartScreen.css
 │   │   ├── StartScreen.js
 │   │   ├── TipDetailScreen.css
 │   │   ├── TipDetailScreen.js
 │   │   ├── TipsScreen.css
-│   │   └── TipsScreen.js
+│   │   ├── TipsScreen.js
+│   │   └── firebaseConfig.js
 │   ├── index.css
 │   ├── index.js
 │   ├── logo.svg
 │   └── reportWebVitals.js
 └── structure.txt
 
-30 directories, 182 files
+30 directories, 183 files
