@@ -1,35 +1,61 @@
-.container {
-  text-align: center;
-  padding: 20px;
-  background-color: #fff;
+/* Убираем горизонтальную прокрутку */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
+/* Основной контейнер, ориентированный на размер экрана iPhone 15 Pro */
+.main-container {
+  max-width: 430px;
+  /* Ширина экрана iPhone 15 Pro */
+  margin: 0 auto;
+  /* Центрирование контейнера */
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Общее выравнивание кнопок назад и бургер-меню */
 .header {
   display: flex;
+  justify-content: space-between;
+  /* Распределение кнопок по бокам */
   align-items: center;
-  margin-bottom: 20px;
+  /* Вертикальное выравнивание */
   width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+/* Контейнеры для кнопок */
+.backButtonContainer,
+.burgerButtonContainer {
+  display: flex;
+  align-items: center;
+  /* Вертикальное выравнивание */
 }
 
 .backButton {
-  flex: 0 0 25%;
-  text-align: left;
+  text-decoration: none;
 }
 
-.backIcon {
-  width: 50px;
-  height: 50px;
+.backIcon,
+.burgerIcon {
+  width: 30px;
+  height: 30px;
 }
 
 .title {
-  flex: 0 0 75%;
   font-size: 36px;
   font-family: 'Georgia, serif';
+  margin: 20px 0;
+  /* Отступы сверху и снизу */
   text-align: center;
+  width: 100%;
 }
 
+/* Сетка для категорий */
 .grid {
   display: flex;
   flex-direction: column;
@@ -45,16 +71,27 @@
   border-radius: 5px;
   text-decoration: none;
   color: #000;
-  width: 80%;
+  width: 100%;
   max-width: 300px;
   background-color: rgb(247, 243, 238);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.item:hover {
+  background-color: rgb(101, 98, 94);
+  color: #fff;
+}
+
+.item:hover .icon {
+  filter: invert(1);
 }
 
 .icon {
   width: 50px;
   height: 50px;
   margin-right: 10px;
+  transition: filter 0.3s;
 }
 
 .text {
@@ -62,4 +99,38 @@
   font-family: 'Georgia, serif';
   flex: 1;
   text-align: center;
+}
+
+/* Стиль для меню */
+.bm-menu {
+  background: #fff;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+.bm-item-list a {
+  display: block;
+  padding: 10px 20px;
+  margin: 20px 0;
+  width: 80%;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  background-color: rgb(247, 243, 238);
+  border: 2px solid rgb(101, 98, 94);
+  border-radius: 5px;
+  font-family: 'Georgia, serif';
+  font-size: 30px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.bm-item-list a:hover {
+  background-color: rgb(101, 98, 94);
+  color: #fff;
+}
+
+/* Затемнение экрана при открытом меню */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
 }

@@ -1,38 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// Импортируем Link для навигации между страницами без перезагрузки страницы.
 import { categoriesPoses } from '../categoriesPoses';
-// Импортируем данные о категориях из categoriesPoses.
+import { slide as Menu } from 'react-burger-menu';
 import './CategoryScreen.css';
-// Подключаем CSS файл для стилизации компонента.
 
 function CategoryScreen() {
-  // Определяем компонент CategoryScreen, который отвечает за отображение категорий.
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleStateChange = (state) => {
+    setMenuOpen(state.isOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
-    <div className="container">
-      {/* Основной контейнер компонента */}
+    <div className="main-container">
 
       <div className="header">
-        {/* Заголовок страницы с кнопкой назад */}
-        <Link to="/" className="backButton">
-          <img src="/images/app/back.svg" alt="back" className="backIcon" />
-        </Link>
 
-        <h1 className="title">Categories</h1>
+        <div className="backButtonContainer">
+          <Link to="/" className="backButton">
+            <img src="/images/app/back.svg" alt="back" className="backIcon" />
+          </Link>
+        </div>
+
+        <div className="burgerButtonContainer">
+          <img
+            src="/images/app/burger.svg"
+            alt="menu"
+            className="burgerIcon"
+            onClick={() => setMenuOpen(!menuOpen)}
+          />
+        </div>
+
       </div>
 
+
+      <h1 className="title">Categories</h1>
+
+      <Menu
+        isOpen={menuOpen}
+        onStateChange={handleStateChange}
+        width={'70%'} /* Определяем ширину выезжающего меню */
+        customBurgerIcon={false}
+        customCrossIcon={false}
+      >
+        <Link to="/" onClick={closeMenu} className="menu-item">
+          Home
+        </Link>
+        <Link to="/categories" onClick={closeMenu} className="menu-item">
+          Poses
+        </Link>
+        <Link to="/tips" onClick={closeMenu} className="menu-item">
+          Tips & Tricks
+        </Link>
+        <Link to="/favorites" onClick={closeMenu} className="menu-item">
+          Favorites
+        </Link>
+      </Menu>
+
       <div className="grid">
-        {/* Сетка для отображения категорий */}
         {categoriesPoses.map(category => (
           <Link to={`/pose-preview/${category.id}`} key={category.id} className="item">
-            {/* Создаем ссылку для каждой категории, используем уникальный ID в качестве ключа */}
-
             <img src={`/images/app/${category.icon}`} alt={category.name} className="icon" />
-            {/* Отображаем иконку категории */}
-
             <span className="text">{category.name}</span>
-            {/* Отображаем название категории */}
           </Link>
         ))}
       </div>
@@ -41,4 +74,3 @@ function CategoryScreen() {
 }
 
 export default CategoryScreen;
-// Экспортируем компонент для использования в других частях приложения
