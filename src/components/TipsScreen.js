@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { categoriesTips } from '../categoriesTips';
 import { slide as Menu } from 'react-burger-menu';
-import BackButton from './BackButton';
-import '../styles/global.css';  // Используем глобальные стили
+import '../styles/global.css';
 
 function TipsScreen() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,7 +19,6 @@ function TipsScreen() {
     <div className="main-container">
 
       <div className="header">
-        <BackButton />
         <div className="iconButton">
           <img
             src="/images/app/burger.svg"

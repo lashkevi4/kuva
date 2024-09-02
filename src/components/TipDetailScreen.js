@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom'; // Добавлен импорт Link
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { categoriesTips } from '../categoriesTips';
 import { slide as Menu } from 'react-burger-menu';
-import BackButton from './BackButton';
-import '../styles/global.css'; // Подключение глобальных стилей
+import '../styles/global.css';
 
 function TipDetailScreen() {
   const { categoryId, tipId } = useParams();
@@ -44,7 +43,6 @@ function TipDetailScreen() {
   return (
     <div className="main-container">
       <div className="header">
-        <BackButton />
         <div className="iconButton">
           <img
             src="/images/app/burger.svg"

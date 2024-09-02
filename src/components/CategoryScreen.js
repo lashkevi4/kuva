@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { categoriesPoses } from '../categoriesPoses';
 import { slide as Menu } from 'react-burger-menu';
-import BackButton from './BackButton';
 import '../styles/global.css';
 
 function CategoryScreen() {
@@ -20,8 +19,6 @@ function CategoryScreen() {
     <div className="main-container">
 
       <div className="header">
-
-        <BackButton />
 
         <div className="iconButton">
 

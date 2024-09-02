@@ -3,7 +3,6 @@ import { ref, get, remove } from "firebase/database";
 import { database, auth } from './firebaseConfig';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
-import BackButton from './BackButton';
 import '../styles/global.css';
 
 function FavoritesScreen() {
@@ -54,7 +53,6 @@ function FavoritesScreen() {
   return (
     <div className="main-container">
       <div className="header">
-        <BackButton />
         <div className="iconButton">
           <img
             src="/images/app/burger.svg"

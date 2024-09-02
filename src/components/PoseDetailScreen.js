@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { categoriesPoses } from '../categoriesPoses';
 import { slide as Menu } from 'react-burger-menu';
-import BackButton from './BackButton';  // Компонент кнопки назад
 import '../styles/global.css'; // Глобальные стили
 import { ref, get, remove, set } from "firebase/database";
 import { database, auth } from './firebaseConfig';
@@ -81,7 +80,6 @@ function PoseDetailScreen() {
   return (
     <div className="main-container">
       <div className="header">
-        <BackButton />
         <div className="iconButton">
           <img
             src="/images/app/burger.svg"

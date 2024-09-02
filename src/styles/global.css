@@ -41,7 +41,7 @@ h6 {
 /* Контейнеры для кнопок навигации */
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
@@ -522,13 +522,7 @@ h6 {
   /* Позволяет прокручивать меню, если контент превышает высоту экрана */
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-}
+
 
 .titleSmall {
   font-size: 1.25rem;

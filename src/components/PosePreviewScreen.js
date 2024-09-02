@@ -2,7 +2,6 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { categoriesPoses } from '../categoriesPoses';
 import { slide as Menu } from 'react-burger-menu';
-import BackButton from './BackButton';
 import '../styles/global.css';
 
 function PosePreviewScreen() {
@@ -31,8 +30,6 @@ function PosePreviewScreen() {
     <div className="main-container">
 
       <div className="header">
-
-        <BackButton />
 
         <div className="iconButton">
 
