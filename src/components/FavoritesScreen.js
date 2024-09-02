@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { ref, get, remove } from "firebase/database";
 import { database, auth } from './firebaseConfig';
 import { Link } from 'react-router-dom';
-import './FavoritesScreen.css';
+import { slide as Menu } from 'react-burger-menu';
+import BackButton from './BackButton';
+import '../styles/global.css';
 
 function FavoritesScreen() {
   const [favorites, setFavorites] = useState([]);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -40,12 +43,51 @@ function FavoritesScreen() {
     }
   };
 
+  const handleStateChange = (state) => {
+    setMenuOpen(state.isOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
-    <div className="favorites-container">
-      <Link to="/" className="backButton">
-        <img src="/images/app/back.svg" alt="back" className="backIcon" />
-      </Link>
-      <h1>Your Favorites</h1>
+    <div className="main-container">
+      <div className="header">
+        <BackButton />
+        <div className="iconButton">
+          <img
+            src="/images/app/burger.svg"
+            alt="menu"
+            className="iconImage"
+            onClick={() => setMenuOpen(!menuOpen)}
+          />
+        </div>
+      </div>
+
+      <h1 className="title">Your Favorites</h1>
+
+      <Menu
+        isOpen={menuOpen}
+        onStateChange={handleStateChange}
+        width={'70%'}
+        customBurgerIcon={false}
+        customCrossIcon={false}
+      >
+        <Link to="/" onClick={closeMenu} className="menu-item">
+          Home
+        </Link>
+        <Link to="/categories" onClick={closeMenu} className="menu-item">
+          Poses
+        </Link>
+        <Link to="/tips" onClick={closeMenu} className="menu-item">
+          Tips & Tricks
+        </Link>
+        <Link to="/favorites" onClick={closeMenu} className="menu-item">
+          Favorites
+        </Link>
+      </Menu>
+
       {favorites.length === 0 ? (
         <p>You have no favorite photos yet.</p>
       ) : (
@@ -57,13 +99,13 @@ function FavoritesScreen() {
                 <img
                   src={`/images/photos/${key.split('_')[0]}/photo${favorite.photoId}.png`}
                   alt={`Pose ${favorite.photoId}`}
+                  className="favorite-photo" // Применяем новый класс для фотографий
                 />
                 <button className="favorite-button" onClick={() => handleRemoveFavorite(key)}>
-                  <img src="/images/app/star_on.svg" alt="Remove from Favorites" />
+                  <img src="/images/app/star_on.svg" alt="Remove from Favorites" className="star-icon" />
                 </button>
               </div>
             </div>
-
           ))}
         </div>
       )}

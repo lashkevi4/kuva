@@ -4,14 +4,6 @@
   position: relative;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin-bottom: 20px;
-}
-
 .backButton {
   position: absolute;
   left: -2rem;
@@ -26,7 +18,7 @@
 }
 
 .title {
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   font-size: 2rem;
   font-family: 'Georgia, serif';
 }

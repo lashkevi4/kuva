@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { categoriesPoses } from '../categoriesPoses';
-import './PoseDetailScreen.css';
+import { slide as Menu } from 'react-burger-menu';
+import BackButton from './BackButton';  // Компонент кнопки назад
+import '../styles/global.css'; // Глобальные стили
 import { ref, get, remove, set } from "firebase/database";
 import { database, auth } from './firebaseConfig';
 
@@ -9,7 +11,16 @@ function PoseDetailScreen() {
   const { categoryId, poseId } = useParams();
   const [state, setState] = useState({ pose: { title: '', description: '', image: '' }, poses: [] });
   const [isPhotoFavorite, setIsPhotoFavorite] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handleStateChange = (state) => {
+    setMenuOpen(state.isOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   const category = categoriesPoses.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' };
 
@@ -26,7 +37,7 @@ function PoseDetailScreen() {
   useEffect(() => {
     const checkIfFavorite = async () => {
       const userId = auth.currentUser.uid;
-      const favoriteKey = `${category.name}_${poseId}`; // Изменяем ключ на имя категории и ID фотографии
+      const favoriteKey = `${category.name}_${poseId}`;
       const favoriteRef = ref(database, `users/${userId}/favorites/${favoriteKey}`);
 
       try {
@@ -46,7 +57,7 @@ function PoseDetailScreen() {
 
   const handleFavoriteToggle = async () => {
     const userId = auth.currentUser.uid;
-    const favoriteKey = `${category.name}_${poseId}`; // Изменяем ключ на имя категории и ID фотографии
+    const favoriteKey = `${category.name}_${poseId}`;
     const favoriteRef = ref(database, `users/${userId}/favorites/${favoriteKey}`);
 
     try {
@@ -55,7 +66,7 @@ function PoseDetailScreen() {
         setIsPhotoFavorite(false);
       } else {
         await set(favoriteRef, {
-          photoId: poseId // Сохраняем только ID фотографии
+          photoId: poseId
         });
         setIsPhotoFavorite(true);
       }
@@ -68,13 +79,41 @@ function PoseDetailScreen() {
   const prevPoseId = parseInt(poseId) > 1 ? parseInt(poseId) - 1 : state.poses.length;
 
   return (
-    <div className="pose-container">
-      <div className="pose-header">
-        <Link to={`/pose-preview/${categoryId}`} className="pose-backButton">
-          <img src="/images/app/back.svg" alt="back" className="pose-backIcon" />
-        </Link>
-        <h1 className="pose-title">{category.name}</h1>
+    <div className="main-container">
+      <div className="header">
+        <BackButton />
+        <div className="iconButton">
+          <img
+            src="/images/app/burger.svg"
+            alt="menu"
+            className="iconImage"
+            onClick={() => setMenuOpen(!menuOpen)}
+          />
+        </div>
       </div>
+      <h1 className="title">{category.name}</h1>
+
+      <Menu
+        isOpen={menuOpen}
+        onStateChange={handleStateChange}
+        width={'70%'}
+        customBurgerIcon={false}
+        customCrossIcon={false}
+      >
+        <Link to="/" onClick={closeMenu} className="menu-item">
+          Home
+        </Link>
+        <Link to="/categories" onClick={closeMenu} className="menu-item">
+          Poses
+        </Link>
+        <Link to="/tips" onClick={closeMenu} className="menu-item">
+          Tips & Tricks
+        </Link>
+        <Link to="/favorites" onClick={closeMenu} className="menu-item">
+          Favorites
+        </Link>
+      </Menu>
+
       <div className="pose-content">
         <div className="pose-image-container">
           <img src={`/images/photos/${category.path}/${state.pose.image}`} alt={state.pose.description} className="pose-image" />

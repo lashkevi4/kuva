@@ -7,6 +7,8 @@ import PoseDetailScreen from './components/PoseDetailScreen';
 import TipsScreen from './components/TipsScreen';
 import TipDetailScreen from './components/TipDetailScreen';
 import FavoritesScreen from './components/FavoritesScreen';
+import './styles/global.css';
+
 
 function App() {
   return (
