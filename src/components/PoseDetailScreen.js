@@ -1,25 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { categoriesPoses } from '../categoriesPoses';
-import { slide as Menu } from 'react-burger-menu';
 import '../styles/global.css'; // Глобальные стили
 import { ref, get, remove, set } from "firebase/database";
 import { database, auth } from './firebaseConfig';
+import BurgerMenu from './BurgerMenu'; // Подключаем бургер-меню
 
 function PoseDetailScreen() {
   const { categoryId, poseId } = useParams();
   const [state, setState] = useState({ pose: { title: '', description: '', image: '' }, poses: [] });
   const [isPhotoFavorite, setIsPhotoFavorite] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-
-  const handleStateChange = (state) => {
-    setMenuOpen(state.isOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
 
   const category = categoriesPoses.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' };
 
@@ -79,38 +70,12 @@ function PoseDetailScreen() {
 
   return (
     <div className="main-container">
+      {/* Подключаем бургер-меню */}
       <div className="header">
-        <div className="iconButton">
-          <img
-            src="/images/app/burger.svg"
-            alt="menu"
-            className="iconImage"
-            onClick={() => setMenuOpen(!menuOpen)}
-          />
-        </div>
+        <BurgerMenu />
       </div>
-      <h1 className="title">{category.name}</h1>
 
-      <Menu
-        isOpen={menuOpen}
-        onStateChange={handleStateChange}
-        width={'70%'}
-        customBurgerIcon={false}
-        customCrossIcon={false}
-      >
-        <Link to="/" onClick={closeMenu} className="menu-item">
-          Home
-        </Link>
-        <Link to="/categories" onClick={closeMenu} className="menu-item">
-          Poses
-        </Link>
-        <Link to="/tips" onClick={closeMenu} className="menu-item">
-          Tips & Tricks
-        </Link>
-        <Link to="/favorites" onClick={closeMenu} className="menu-item">
-          Favorites
-        </Link>
-      </Menu>
+      <h1 className="title">{category.name}</h1>
 
       <div className="pose-content">
         <div className="pose-image-container">

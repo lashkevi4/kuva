@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { categoriesTips } from '../categoriesTips';
-import { slide as Menu } from 'react-burger-menu';
 import '../styles/global.css';
+import BurgerMenu from './BurgerMenu'; // Подключаем бургер-меню
 
 function TipDetailScreen() {
   const { categoryId, tipId } = useParams();
   const [state, setState] = useState({ tip: { title: '', content: [], image: '' }, tips: [] });
-  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const category = categoriesTips.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' };
@@ -32,49 +31,13 @@ function TipDetailScreen() {
     return state.tips[(currentIndex - 1 + state.tips.length) % state.tips.length].id;
   };
 
-  const handleStateChange = (state) => {
-    setMenuOpen(state.isOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
   return (
     <div className="main-container">
       <div className="header">
-        <div className="iconButton">
-          <img
-            src="/images/app/burger.svg"
-            alt="menu"
-            className="iconImage"
-            onClick={() => setMenuOpen(!menuOpen)}
-          />
-        </div>
+        <BurgerMenu /> {/* Подключаем бургер-меню */}
       </div>
 
       <h1 className="title">{category.name}</h1>
-
-      <Menu
-        isOpen={menuOpen}
-        onStateChange={handleStateChange}
-        width={'70%'}
-        customBurgerIcon={false}
-        customCrossIcon={false}
-      >
-        <Link to="/" onClick={closeMenu} className="menu-item">
-          Home
-        </Link>
-        <Link to="/categories" onClick={closeMenu} className="menu-item">
-          Poses
-        </Link>
-        <Link to="/tips" onClick={closeMenu} className="menu-item">
-          Tips & Tricks
-        </Link>
-        <Link to="/favorites" onClick={closeMenu} className="menu-item">
-          Favorites
-        </Link>
-      </Menu>
 
       <div className="tip">
         <img src={`/images/tips/${category.path}/${state.tip.image}`} alt={state.tip.title} className="tip-image" />

@@ -1,20 +1,10 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { categoriesPoses } from '../categoriesPoses';
-import { slide as Menu } from 'react-burger-menu';
 import '../styles/global.css';
+import BurgerMenu from './BurgerMenu'; // Подключаем бургер-меню
 
 function PosePreviewScreen() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleStateChange = (state) => {
-    setMenuOpen(state.isOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
   const { categoryId } = useParams();
   const category = useMemo(() => categoriesPoses.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' }, [categoryId]);
   const [poses, setPoses] = useState([]);
@@ -28,49 +18,12 @@ function PosePreviewScreen() {
 
   return (
     <div className="main-container">
-
+      {/* Подключаем бургер-меню */}
       <div className="header">
-
-        <div className="iconButton">
-
-          <img
-            src="/images/app/burger.svg"
-            alt="menu"
-            className="iconImage"
-            onClick={() => setMenuOpen(!menuOpen)}
-          />
-
-        </div>
-
+        <BurgerMenu />
       </div>
 
       <h1 className="title">{category.name}</h1>
-
-      <Menu
-        isOpen={menuOpen}
-        onStateChange={handleStateChange}
-        width={'70%'} /* Определяем ширину выезжающего меню */
-        customBurgerIcon={false}
-        customCrossIcon={false}
-      >
-
-        <Link to="/" onClick={closeMenu} className="menu-item">
-          Home
-        </Link>
-
-        <Link to="/categories" onClick={closeMenu} className="menu-item">
-          Poses
-        </Link>
-
-        <Link to="/tips" onClick={closeMenu} className="menu-item">
-          Tips & Tricks
-        </Link>
-
-        <Link to="/favorites" onClick={closeMenu} className="menu-item">
-          Favorites
-        </Link>
-
-      </Menu>
 
       <div className="preview-grid">
         {poses.map(pose => (
@@ -79,7 +32,6 @@ function PosePreviewScreen() {
           </Link>
         ))}
       </div>
-
     </div>
   );
 }

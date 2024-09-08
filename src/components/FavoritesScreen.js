@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ref, get, remove } from "firebase/database";
 import { database, auth } from './firebaseConfig';
-import { Link } from 'react-router-dom';
-import { slide as Menu } from 'react-burger-menu';
+import BurgerMenu from './BurgerMenu'; // Подключаем бургер-меню
 import '../styles/global.css';
 
 function FavoritesScreen() {
   const [favorites, setFavorites] = useState([]);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -42,49 +40,14 @@ function FavoritesScreen() {
     }
   };
 
-  const handleStateChange = (state) => {
-    setMenuOpen(state.isOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
   return (
     <div className="main-container">
+      {/* Подключаем бургер-меню */}
       <div className="header">
-        <div className="iconButton">
-          <img
-            src="/images/app/burger.svg"
-            alt="menu"
-            className="iconImage"
-            onClick={() => setMenuOpen(!menuOpen)}
-          />
-        </div>
+        <BurgerMenu />
       </div>
 
       <h1 className="title">Your Favorites</h1>
-
-      <Menu
-        isOpen={menuOpen}
-        onStateChange={handleStateChange}
-        width={'70%'}
-        customBurgerIcon={false}
-        customCrossIcon={false}
-      >
-        <Link to="/" onClick={closeMenu} className="menu-item">
-          Home
-        </Link>
-        <Link to="/categories" onClick={closeMenu} className="menu-item">
-          Poses
-        </Link>
-        <Link to="/tips" onClick={closeMenu} className="menu-item">
-          Tips & Tricks
-        </Link>
-        <Link to="/favorites" onClick={closeMenu} className="menu-item">
-          Favorites
-        </Link>
-      </Menu>
 
       {favorites.length === 0 ? (
         <p>You have no favorite photos yet.</p>
