@@ -7,21 +7,30 @@ import PoseDetailScreen from './components/PoseDetailScreen';
 import TipsScreen from './components/TipsScreen';
 import TipDetailScreen from './components/TipDetailScreen';
 import FavoritesScreen from './components/FavoritesScreen';
-import './styles/global.css';
+import './styles/global.css'; // Подключаем стили
 
 function App() {
   return (
     <>
+
+      {/* Сообщение для горизонтальной ориентации */}
+      <div className="landscape-message">
+        <img src="/images/app/arrow.svg" alt="Rotating Arrow" className="rotating-arrow" />
+        <p>Please rotate your phone.</p>
+      </div>
+
       {/* Существующие маршруты приложения */}
-      <Routes>
-        <Route path="/" element={<StartScreen />} />
-        <Route path="/categories" element={<CategoryScreen />} />
-        <Route path="/pose-preview/:categoryId" element={<PosePreviewScreen />} />
-        <Route path="/pose-detail/:categoryId/:poseId" element={<PoseDetailScreen />} />
-        <Route path="/tips" element={<TipsScreen />} />
-        <Route path="/tips/:categoryId/:tipId" element={<TipDetailScreen />} />
-        <Route path="/favorites" element={<FavoritesScreen />} />
-      </Routes>
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<StartScreen />} />
+          <Route path="/categories" element={<CategoryScreen />} />
+          <Route path="/pose-preview/:categoryId" element={<PosePreviewScreen />} />
+          <Route path="/pose-detail/:categoryId/:poseId" element={<PoseDetailScreen />} />
+          <Route path="/tips" element={<TipsScreen />} />
+          <Route path="/tips/:categoryId/:tipId" element={<TipDetailScreen />} />
+          <Route path="/favorites" element={<FavoritesScreen />} />
+        </Routes>
+      </div>
     </>
   );
 }

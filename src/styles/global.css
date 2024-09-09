@@ -300,21 +300,7 @@ h6 {
   border-radius: 0.3125rem;
 }
 
-.favorite-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-  padding: 0.3125rem;
-}
 
-.favorite-button img {
-  width: 1.5rem;
-  height: 1.5rem;
-}
 
 .pose-description {
   text-align: left;
@@ -416,7 +402,6 @@ h6 {
   /* 20px */
 }
 
-/* Сетка для избранных фотографий */
 .favorites-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -425,16 +410,16 @@ h6 {
   justify-items: center;
 }
 
+/* Контейнер для изображения и кнопки удаления */
+.favorite-image-container {
+  position: relative;
+}
+
 /* Стиль для каждого элемента избранного */
 .favorite-item {
   border-radius: 0.625rem;
   /* 10px */
   width: 100%;
-}
-
-/* Контейнер для изображения и кнопки удаления */
-.favorite-image-container {
-  position: relative;
 }
 
 /* Изображение в избранном */
@@ -449,26 +434,21 @@ h6 {
 /* Кнопка удаления из избранного */
 .favorite-button {
   position: absolute;
-  top: 0.625rem;
-  /* 10px */
-  right: 0.625rem;
-  /* 10px */
+  top: 10px;
+  right: 10px;
   background: rgba(255, 255, 255, 0.5);
-  border: 1px solid #ccc;
+  border: none;
   cursor: pointer;
   border-radius: 50%;
   padding: 0.3125rem;
-  /* 5px */
 }
 
 .favorite-button img {
   width: 1.5rem;
-  /* 24px */
   height: 1.5rem;
-  /* 24px */
+  border: none;
 }
 
-/* Заголовок категории в избранном */
 .favorite-item h2 {
   font-size: 1.875rem;
   /* 30px */
@@ -476,18 +456,6 @@ h6 {
   /* 5px */
   font-family: 'Georgia, serif';
 }
-
-/* Изображение внутри favorite-item */
-.favorite-item img {
-  width: 100%;
-  border: 0.125rem solid #000;
-  border-radius: 0.625rem;
-}
-
-.favorite-button img {
-  border: none;
-}
-
 
 
 /* -------------------- StartScreen -------------------- */
@@ -707,4 +675,57 @@ h6 {
 
 .error {
   animation: errorHighlight 0.5s ease-out;
+}
+
+
+
+/* Стили для landscape ориентации */
+@media screen and (orientation: landscape) {
+  .content {
+    display: none;
+  }
+
+  /* Плавное вращение иконки вокруг своей оси */
+  @keyframes spin {
+    10% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(360deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+  .landscape-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-size: 3rem;
+    text-align: center;
+    color: black;
+    font-family: 'Georgia, serif';
+    flex-direction: column;
+    font-weight: bold;
+  }
+
+  .rotating-arrow {
+    width: 90px;
+    height: 90px;
+    animation: spin 2s linear infinite;
+  }
+}
+
+/* В вертикальной ориентации сообщение скрывается, и показывается контент */
+@media screen and (orientation: portrait) {
+  .landscape-message {
+    display: none;
+  }
 }

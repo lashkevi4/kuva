@@ -1,67 +1,84 @@
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from './firebaseConfig';
-
 import '../styles/global.css';
 
 function SignInOut({ closeModal }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isRegister, setIsRegister] = useState(false); // Переключатель между регистрацией и входом
-  const [errorMessage, setErrorMessage] = useState(''); // Состояние для отображения ошибок
+  const [isRegister, setIsRegister] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(''); // Для вывода ошибок
+
+  const isEmailValid = (email) => {
+    // Простейшая проверка корректности e-mail
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleSignIn = () => {
-    const passwordInput = document.querySelector('input[type="password"]'); // Находим поле для пароля
+    // Проверка e-mail
+    if (!isEmailValid(email)) {
+      setErrorMessage("Invalid email format.");
+      return;
+    }
+
+    // Проверка длины пароля
+    if (password.length < 6) {
+      setErrorMessage("Password should be at least 6 characters.");
+      return;
+    }
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         closeModal(); // Закрываем окно при успешном входе
       })
       .catch((error) => {
-        // Убираем класс, чтобы анимация сработала снова
-        passwordInput.classList.remove('error');
-
-        // Используем setTimeout для задержки перед повторным добавлением класса
-        setTimeout(() => {
-          passwordInput.classList.add('error');
-        }, 10); // Короткая задержка перед повторным добавлением
+        setErrorMessage("Error signing in. Please check your email and password.");
       });
   };
 
-
-
   const handleSignUp = () => {
+    // Проверка e-mail
+    if (!isEmailValid(email)) {
+      setErrorMessage("Invalid email format.");
+      return;
+    }
+
+    // Проверка длины пароля
+    if (password.length < 6) {
+      setErrorMessage("Password should be at least 6 characters.");
+      return;
+    }
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         closeModal(); // Закрываем окно при успешной регистрации
       })
       .catch((error) => {
-        setErrorMessage("Registration error"); // Отображаем короткое сообщение об ошибке
+        setErrorMessage("Registration error. Please try again.");
       });
   };
 
   return (
     <div className="auth-container">
-
       <h2>{isRegister ? 'Sign Up' : 'Sign In'}</h2>
 
       <div className="auth-inputs">
-
         <input
           type="email"
           placeholder="Enter email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-
         <input
           type="password"
           placeholder="Enter password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
       </div>
+
+      {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Отображение ошибки */}
 
       <button className="auth-button" onClick={isRegister ? handleSignUp : handleSignIn}>
         {isRegister ? 'Sign Up' : 'Sign In'}
@@ -72,7 +89,6 @@ function SignInOut({ closeModal }) {
       </p>
 
       <button className="close-button" onClick={closeModal}>Close</button>
-
     </div>
   );
 }

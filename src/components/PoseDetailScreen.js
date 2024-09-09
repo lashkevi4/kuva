@@ -5,11 +5,14 @@ import '../styles/global.css'; // Глобальные стили
 import { ref, get, remove, set } from "firebase/database";
 import { database, auth } from './firebaseConfig';
 import BurgerMenu from './BurgerMenu'; // Подключаем бургер-меню
+import Modal from './Modal'; // Модальное окно
+import SignInOut from './SignInOut'; // Компонент для авторизации
 
 function PoseDetailScreen() {
   const { categoryId, poseId } = useParams();
   const [state, setState] = useState({ pose: { title: '', description: '', image: '' }, poses: [] });
   const [isPhotoFavorite, setIsPhotoFavorite] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Состояние для модального окна авторизации
   const navigate = useNavigate();
 
   const category = categoriesPoses.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' };
@@ -26,6 +29,11 @@ function PoseDetailScreen() {
 
   useEffect(() => {
     const checkIfFavorite = async () => {
+      if (!auth.currentUser) {
+        setIsPhotoFavorite(false);
+        return;
+      }
+
       const userId = auth.currentUser.uid;
       const favoriteKey = `${category.name}_${poseId}`;
       const favoriteRef = ref(database, `users/${userId}/favorites/${favoriteKey}`);
@@ -46,6 +54,12 @@ function PoseDetailScreen() {
   }, [category.name, poseId]);
 
   const handleFavoriteToggle = async () => {
+    if (!auth.currentUser) {
+      // Если пользователь не залогинен, открываем модальное окно для авторизации
+      setIsModalOpen(true);
+      return;
+    }
+
     const userId = auth.currentUser.uid;
     const favoriteKey = `${category.name}_${poseId}`;
     const favoriteRef = ref(database, `users/${userId}/favorites/${favoriteKey}`);
@@ -100,6 +114,13 @@ function PoseDetailScreen() {
           <img src="/images/app/right.svg" alt="next" className="pose-icon" />
         </button>
       </div>
+
+      {/* Модальное окно для авторизации */}
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <SignInOut closeModal={() => setIsModalOpen(false)} />
+        </Modal>
+      )}
     </div>
   );
 }
