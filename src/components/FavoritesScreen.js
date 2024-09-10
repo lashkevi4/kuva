@@ -58,9 +58,9 @@ function FavoritesScreen() {
               <h2>{key.split('_')[0]}</h2> {/* Имя категории */}
               <div className="favorite-image-container">
                 <img
-                  src={`/images/photos/${key.split('_')[0]}/photo${favorite.photoId}.png`}
+                  src={`/images/photos/${key.split('_')[0].toLowerCase()}/photo${favorite.photoId}.png`}
                   alt={`Pose ${favorite.photoId}`}
-                  className="favorite-photo" // Применяем новый класс для фотографий
+                  className="favorite-photo"
                 />
                 <button className="favorite-button" onClick={() => handleRemoveFavorite(key)}>
                   <img src="/images/app/star_on.svg" alt="Remove from Favorites" className="star-icon" />
