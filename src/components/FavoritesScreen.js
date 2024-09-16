@@ -58,7 +58,7 @@ function FavoritesScreen() {
               <h2>{key.split('_')[0]}</h2> {/* Имя категории */}
               <div className="favorite-image-container">
                 <img
-                  src={`/images/photos/${key.split('_')[0].toLowerCase()}/photo${favorite.photoId}.png`}
+                  src={`/images/photos/${key.split('_')[0].toLowerCase()}/photo${favorite.photoId}.jpg`}
                   alt={`Pose ${favorite.photoId}`}
                   className="favorite-photo"
                 />
