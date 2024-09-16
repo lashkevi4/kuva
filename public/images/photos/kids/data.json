@@ -3,61 +3,61 @@
     {
       "id": 1,
       "title": "Portrait with Natural Light",
-      "image": "photo1.png",
+      "image": "photo1.jpg",
       "description": "To achieve a shot like this, position the model near a window to utilize soft natural light. Ensure the light falls at an angle, creating pleasant shadows and highlighting the model's facial features. The model should sit in a relaxed pose, with a straight back and slightly crossed arms to convey naturalness and coziness. Use a lens with a shallow depth of field to blur the background and keep the focus on the model's face."
     },
     {
       "id": 2,
       "title": "Christmas Retro Portrait",
-      "image": "photo2.png",
+      "image": "photo2.jpg",
       "description": "Position the model in front of a background with a Christmas tree and toys to enhance the holiday ambiance. The lighting should be soft and diffused to create a warm and cozy effect. Use a shallow depth of field to focus on the model and blur the background. Ensure the model interacts with the props, such as holding Christmas ornaments, to add dynamism and naturalness to the shot."
     },
     {
       "id": 3,
       "title": "Portrait with a Pet",
-      "image": "photo3.png",
+      "image": "photo3.jpg",
       "description": "Position the model with the animal in a comfortable pose to convey the warm bond between them. The lighting should be soft and directional to avoid harsh shadows and highlight the scene's softness. Use a neutral background and a shallow depth of field to focus attention on the model and the pet. Ensure that the eyes of both the model and the animal are well-lit to add liveliness and expressiveness to the shot."
     },
     {
       "id": 4,
       "title": "Portrait with a Hedgehog",
-      "image": "photo4.png",
+      "image": "photo4.jpg",
       "description": "Use soft natural light for even illumination. Position the model with the hedgehog at chest level to focus on both. Keep the background blurred with a shallow depth of field. Ensure the model slightly tilts her head towards the hedgehog to create a sense of closeness. Monitor the model’s facial expression to keep it soft and natural."
     },
     {
       "id": 5,
       "title": "Portrait with a Flower Crown",
-      "image": "photo5.png",
+      "image": "photo5.jpg",
       "description": "Shoot during sunset or golden hour for soft and warm lighting. Position the model at the level of the flowers to create an effect as if she is surrounded by flowers. Use a shallow depth of field to blur the foreground and background, keeping the model’s face in focus. Ensure the flower crown and the model’s face are well-lit to highlight their details. Choose a neutral or harmonious background to avoid distracting from the model."
     },
     {
       "id": 6,
       "title": "Autumn Portrait",
-      "image": "photo6.png",
+      "image": "photo6.jpg",
       "description": "Use soft natural light, such as in the shade or on a cloudy day, to avoid harsh shadows. Position the model against a backdrop of autumn foliage to create a vibrant and rich background. Use a shallow depth of field to blur the background and focus on the model’s face. Ask the model to take a natural and relaxed pose, gently touching her hands together to add tenderness and expressiveness to the shot."
     },
     {
       "id": 7,
       "title": "Winter Portrait by the Wall",
-      "image": "photo7.png",
+      "image": "photo7.jpg",
       "description": "Use soft diffused light to highlight the texture of the fur and knitted accessories. Position the model next to a wall, asking her to lean against it for a natural and relaxed pose. Choose a neutral background to keep the focus on the model. Use a shallow depth of field to blur the background. Ensure the model's face is well-lit and her facial expression is soft and natural."
     },
     {
       "id": 8,
       "title": "Reading in a Cozy Setting",
-      "image": "photo8.png",
+      "image": "photo8.jpg",
       "description": "Use warm lighting to create a comfortable atmosphere. Position the model in a cozy chair and have her hold a book or magazine to create a natural scene. Choose a background and props in warm tones to harmonize with the model's clothing. Ensure the model's face is well-lit and highlighted. Use a shallow depth of field to blur the background and focus on the model."
     },
     {
       "id": 9,
       "title": "Outdoor Portrait",
-      "image": "photo9.png",
+      "image": "photo9.jpg",
       "description": "Use soft natural lighting, such as on a cloudy day or in the shade, to avoid harsh shadows. Position the model sitting on a wooden surface to add texture and interest to the shot. Ask the model to take a relaxed but confident pose, such as crossing one leg over the other and leaning on one hand. Use a shallow depth of field to blur the background and focus attention on the model."
     },
     {
       "id": 10,
       "title": "Seaside Portrait",
-      "image": "photo10.png",
+      "image": "photo10.jpg",
       "description": "Shoot during the golden hour for soft and warm lighting. Position the models so the light falls from the side, creating pleasant shadows and depth. Use a reflector to soften shadows on their faces. Ask the models to interact with props and each other to make the shot look lively and natural. Maintain a shallow depth of field to focus attention on the models and slightly blur the background."
     }
   ]
