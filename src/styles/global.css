@@ -9,9 +9,10 @@ html {
   box-sizing: border-box;
 }
 
-/* ориентируемся на мобильрную версию */
+/* ориентируемся на мобильную версию */
 .main-container {
-  max-width: 430px;
+  max-width: 26.875rem;
+  /* 430px */
   margin: 0 auto;
   padding: 1.25rem;
   text-align: center;
@@ -35,7 +36,7 @@ h6 {
   font-size: 2.25rem;
   /* 36px */
   margin: 1.25rem 0 1.25rem;
-  /* Отступы сверху и снизу */
+  /* отступы сверху и снизу */
 }
 
 /* Контейнеры для кнопок навигации */
@@ -70,18 +71,24 @@ h6 {
 
 .bm-item-list a {
   display: block;
-  padding: 10px 20px;
-  margin: 20px 0;
+  padding: 0.625rem 1.25rem;
+  /* 10px 20px */
+  margin: 1.25rem 0;
+  /* 20px 0 */
   width: 80%;
   text-align: center;
   text-decoration: none;
   color: #000;
   background-color: rgb(247, 243, 238);
-  border: 2px solid rgb(101, 98, 94);
-  border-radius: 5px;
+  border: 0.125rem solid rgb(101, 98, 94);
+  /* 2px */
+  border-radius: 0.3125rem;
+  /* 5px */
   font-family: 'Georgia, serif';
-  font-size: 30px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1.875rem;
+  /* 30px */
+  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+  /* 0px 4px 6px */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -112,8 +119,10 @@ h6 {
 }
 
 .iconImage {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  /* 30px */
+  height: 1.875rem;
+  /* 30px */
 }
 
 /* -------------------- CategoryScreen -------------------- */
@@ -125,7 +134,7 @@ h6 {
   /* 10px */
   align-items: center;
   justify-content: center;
-  /* Центрирование содержимого */
+  /* центрирование содержимого */
 }
 
 .category-item {
@@ -133,7 +142,8 @@ h6 {
   align-items: center;
   padding: 0.3125rem;
   /* 5px */
-  border: 2px solid rgb(101, 98, 94);
+  border: 0.125rem solid rgb(101, 98, 94);
+  /* 2px */
   border-radius: 0.625rem;
   /* 10px */
   text-decoration: none;
@@ -142,7 +152,8 @@ h6 {
   max-width: 18.75rem;
   /* 300px */
   background-color: rgb(247, 243, 238);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+  /* 0px 4px 6px */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -177,20 +188,24 @@ h6 {
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* Две колонки одинаковой ширины */
-  gap: 10px;
+  /* две колонки одинаковой ширины */
+  gap: 0.625rem;
+  /* 10px */
   justify-content: center;
 }
 
 .preview-item {
-  border: 1px solid #000;
-  border-radius: 10px;
+  border: 0.0625rem solid #000;
+  /* 1px */
+  border-radius: 0.625rem;
+  /* 10px */
   overflow: hidden;
 }
 
 .preview-image {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 0.625rem;
+  /* 10px */
 }
 
 /* -------------------- TipsScreen -------------------- */
@@ -202,7 +217,7 @@ h6 {
   /* 10px */
   align-items: center;
   justify-content: center;
-  /* Центрирование содержимого */
+  /* центрирование содержимого */
 }
 
 .tips-item {
@@ -210,7 +225,8 @@ h6 {
   align-items: center;
   padding: 0.3125rem;
   /* 5px */
-  border: 2px solid rgb(101, 98, 94);
+  border: 0.125rem solid rgb(101, 98, 94);
+  /* 2px */
   border-radius: 0.625rem;
   /* 10px */
   text-decoration: none;
@@ -219,7 +235,8 @@ h6 {
   max-width: 18.75rem;
   /* 300px */
   background-color: rgb(247, 243, 238);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+  /* 0px 4px 6px */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -275,12 +292,15 @@ h6 {
 
 .pose-backIcon {
   width: 2rem;
+  /* 32px */
   height: 2rem;
+  /* 32px */
 }
 
 .pose-title {
   margin: 0 auto;
   font-size: 2.25rem;
+  /* 36px */
   font-family: 'Georgia, serif';
 }
 
@@ -288,6 +308,7 @@ h6 {
   text-align: center;
   margin: 0 auto;
   max-width: 25rem;
+  /* 400px */
 }
 
 .pose-image-container {
@@ -298,14 +319,14 @@ h6 {
   max-width: 100%;
   height: auto;
   border-radius: 0.3125rem;
+  /* 5px */
 }
-
-
 
 .pose-description {
   text-align: left;
   font-size: 1.4rem;
   margin-top: 0.625rem;
+  /* 10px */
 }
 
 .pose-navigation {
@@ -313,7 +334,9 @@ h6 {
   justify-content: space-between;
   align-items: center;
   max-width: 25rem;
+  /* 400px */
   margin: 1.25rem auto;
+  /* 20px auto */
 }
 
 .pose-navButton {
@@ -324,31 +347,36 @@ h6 {
 
 .pose-icon {
   width: 1.875rem;
+  /* 30px */
   height: 1.875rem;
+  /* 30px */
 }
 
 .pose-pageIndicator {
   font-size: 1.5rem;
+  /* 24px */
   font-family: 'Georgia, serif';
 }
 
 .pose-bottomSpace {
   height: 1.25rem;
+  /* 20px */
 }
-
-
 
 /* -------------------- TipDetailScreen -------------------- */
 
 .tip-container {
   text-align: center;
-  padding: 20px;
+  padding: 1.25rem;
+  /* 20px */
   position: relative;
 }
 
 .tip-title {
   font-size: 2.25rem;
+  /* 36px */
   margin: 1.25rem 0;
+  /* 20px 0 */
   text-align: center;
   font-family: 'Georgia, serif';
 }
@@ -357,8 +385,10 @@ h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 400px;
-  margin: 20px auto;
+  max-width: 25rem;
+  /* 400px */
+  margin: 1.25rem auto;
+  /* 20px auto */
 }
 
 .tip-navButton {
@@ -368,23 +398,28 @@ h6 {
 }
 
 .tip-icon {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  /* 30px */
+  height: 1.875rem;
+  /* 30px */
 }
 
 .tip-pageIndicator {
-  font-size: 24px;
+  font-size: 1.5rem;
+  /* 24px */
   font-family: 'Georgia, serif';
 }
 
 .tip-bottomSpace {
-  height: 20px;
+  height: 1.25rem;
+  /* 20px */
 }
 
 .tip-image {
   max-width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
+  /* 5px */
 }
 
 .tip-content {
@@ -392,10 +427,9 @@ h6 {
   font-size: 1.4rem;
 }
 
-
 /* -------------------- FavoritesScreen -------------------- */
 
-/* Основной контейнер */
+/* основной контейнер */
 .favorites-container {
   text-align: center;
   padding: 1.25rem;
@@ -410,19 +444,19 @@ h6 {
   justify-items: center;
 }
 
-/* Контейнер для изображения и кнопки удаления */
+/* контейнер для изображения и кнопки удаления */
 .favorite-image-container {
   position: relative;
 }
 
-/* Стиль для каждого элемента избранного */
+/* стиль для каждого элемента избранного */
 .favorite-item {
   border-radius: 0.625rem;
   /* 10px */
   width: 100%;
 }
 
-/* Изображение в избранном */
+/* изображение в избранном */
 .favorite-item img {
   width: 100%;
   border: 0.125rem solid #000;
@@ -431,21 +465,26 @@ h6 {
   /* 10px */
 }
 
-/* Кнопка удаления из избранного */
+/* кнопка удаления из избранного */
 .favorite-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0.625rem;
+  /* 10px */
+  right: 0.625rem;
+  /* 10px */
   background: rgba(255, 255, 255, 0.5);
   border: none;
   cursor: pointer;
   border-radius: 50%;
   padding: 0.3125rem;
+  /* 5px */
 }
 
 .favorite-button img {
   width: 1.5rem;
+  /* 24px */
   height: 1.5rem;
+  /* 24px */
   border: none;
 }
 
@@ -457,10 +496,7 @@ h6 {
   font-family: 'Georgia, serif';
 }
 
-
 /* -------------------- StartScreen -------------------- */
-
-
 
 .startScreenHeader {
   display: flex;
@@ -472,11 +508,10 @@ h6 {
   top: 0;
   left: 0;
   width: 70%;
-  /* Ширина меню */
+  /* ширина меню */
   height: 100%;
   z-index: 1001;
-  /* Убедитесь, что меню находится над overlay */
-
+  /* убедитесь, что меню находится над overlay */
 }
 
 .bm-menu {
@@ -485,12 +520,10 @@ h6 {
   font-size: 1.15em;
   width: 100%;
   max-height: 100vh;
-  /* Ограничивает высоту меню высотой окна браузера */
+  /* ограничивает высоту меню высотой окна браузера */
   overflow-y: auto;
-  /* Позволяет прокручивать меню, если контент превышает высоту экрана */
+  /* позволяет прокручивать меню, если контент превышает высоту экрана */
 }
-
-
 
 .titleSmall {
   font-size: 1.25rem;
@@ -542,13 +575,15 @@ h6 {
   text-decoration: none;
   color: #000;
   background-color: rgb(247, 243, 238);
-  border: 2px solid rgb(101, 98, 94);
+  border: 0.125rem solid rgb(101, 98, 94);
+  /* 2px */
   border-radius: 0.3125rem;
   /* 5px */
   font-family: 'Georgia, serif';
   font-size: 1.875rem;
   /* 30px */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
+  /* 0px 4px 6px */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -556,8 +591,6 @@ h6 {
   background-color: rgb(101, 98, 94);
   color: #fff;
 }
-
-
 
 /* -------------------- Modal -------------------- */
 .modal-overlay {
@@ -575,21 +608,25 @@ h6 {
 
 .modal-content {
   width: 80%;
-  padding: 20px;
+  padding: 1.25rem;
+  /* 20px */
   background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.625rem;
+  /* 10px */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  /* 0 4px 8px */
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Равномерное распределение по вертикали */
+  /* равномерное распределение по вертикали */
 }
 
 .auth-container {
   text-align: center;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 0.5rem;
+  /* 8px */
 
   display: flex;
   flex-direction: column;
@@ -599,24 +636,31 @@ h6 {
 
 .auth-container h2 {
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  /* 20px */
 }
 
 .auth-inputs {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+  /* 20px */
 }
 
 .auth-inputs input {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 0.625rem;
+  /* 10px */
+  font-size: 1rem;
+  /* 16px */
+  border: 0.0625rem solid #ccc;
+  /* 1px */
+  border-radius: 0.3125rem;
+  /* 5px */
   box-sizing: border-box;
 }
 
 .auth-inputs input[type="email"] {
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
+  /* 15px */
 }
 
 /* Кнопка Sign In */
@@ -624,18 +668,23 @@ h6 {
   width: 100%;
   background-color: rgb(247, 243, 238);
   color: black;
-  border: 2px solid rgb(101, 98, 94);
-  padding: 10px;
-  font-size: 18px;
+  border: 0.125rem solid rgb(101, 98, 94);
+  /* 2px */
+  padding: 0.625rem;
+  /* 10px */
+  font-size: 1.125rem;
+  /* 18px */
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
+  /* 5px */
   transition: all 0.3s ease;
 }
 
 .auth-button:hover {
   background-color: rgb(69, 160, 73);
   color: white;
-  border: 2px solid rgb(101, 98, 94);
+  border: 0.125rem solid rgb(101, 98, 94);
+  /* 2px */
 }
 
 /* Кнопка Close */
@@ -643,19 +692,25 @@ h6 {
   width: 100%;
   background-color: rgb(247, 243, 238);
   color: black;
-  border: 2px solid rgb(101, 98, 94);
-  padding: 10px;
-  font-size: 18px;
+  border: 0.125rem solid rgb(101, 98, 94);
+  /* 2px */
+  padding: 0.625rem;
+  /* 10px */
+  font-size: 1.125rem;
+  /* 18px */
   cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
+  border-radius: 0.3125rem;
+  /* 5px */
+  margin-top: 0.625rem;
+  /* 10px */
   transition: all 0.3s ease;
 }
 
 .close-button:hover {
   background-color: rgb(211, 47, 47);
   color: white;
-  border: 2px solid rgb(101, 98, 94);
+  border: 0.125rem solid rgb(101, 98, 94);
+  /* 2px */
 }
 
 .toggle-link {
@@ -665,11 +720,12 @@ h6 {
 
 @keyframes errorHighlight {
   0% {
-    box-shadow: 0 0 0 0px rgba(255, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
   }
 
   100% {
-    box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.7);
+    box-shadow: 0 0 0.3125rem 0.3125rem rgba(255, 0, 0, 0.7);
+    /* 0 0 5px 5px */
   }
 }
 
@@ -677,15 +733,13 @@ h6 {
   animation: errorHighlight 0.5s ease-out;
 }
 
-
-
 /* Стили для landscape ориентации */
 @media screen and (orientation: landscape) {
   .content {
     display: none;
   }
 
-  /* Плавное вращение иконки вокруг своей оси */
+  /* плавное вращение иконки вокруг своей оси */
   @keyframes spin {
     10% {
       transform: rotate(0deg);
@@ -700,8 +754,6 @@ h6 {
     }
   }
 
-
-
   .landscape-message {
     display: flex;
     justify-content: center;
@@ -709,6 +761,7 @@ h6 {
     height: 100vh;
     width: 100vw;
     font-size: 3rem;
+    /* 48px */
     text-align: center;
     color: black;
     font-family: 'Georgia, serif';
@@ -717,8 +770,10 @@ h6 {
   }
 
   .rotating-arrow {
-    width: 90px;
-    height: 90px;
+    width: 5.625rem;
+    /* 90px */
+    height: 5.625rem;
+    /* 90px */
     animation: spin 2s linear infinite;
   }
 }

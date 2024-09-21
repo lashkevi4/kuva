@@ -1,56 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import { slide as Menu } from 'react-burger-menu';
-import { Link, useNavigate } from 'react-router-dom'; // Добавили useNavigate для перехода
-import SignInOut from './SignInOut'; // Компонент для авторизации
-import Modal from './Modal'; // Компонент модального окна
-import { auth } from './firebaseConfig'; // Firebase конфигурация
+import { Link, useNavigate } from 'react-router-dom'; //   useNavigate для перехода
+import SignInOut from './SignInOut'; // авторизация
+import Modal from './Modal'; // компонент модального окна
+import { auth } from './firebaseConfig'; // firebase конфигурация
 import '../styles/global.css';
 
+// основной компонент бокового меню
 const BurgerMenu = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // состояние открытия меню
+  const [isModalOpen, setIsModalOpen] = useState(false); // состояние открытия модального окна
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // состояние авторизации пользователя
 
-  const navigate = useNavigate(); // Добавили useNavigate для перехода
+  const navigate = useNavigate(); // хук для перехода между страницами
 
-  // Проверка статуса авторизации при изменении состояния
+  // проверка статуса авторизации пользователя
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setIsLoggedIn(!!user); // Проверка авторизации
+      setIsLoggedIn(!!user); // обновление состояния авторизации
     });
-    return unsubscribe; // Отписка при размонтировании
+    return unsubscribe; // отписка при размонтировании компонента
   }, []);
 
-  const closeMenu = () => setMenuOpen(false); // Закрытие меню
+  const closeMenu = () => setMenuOpen(false); // закрытие бокового меню
 
+  // обработка клика на "избранное", открывает окно входа, если не авторизован
   const handleFavoritesClick = (event) => {
     if (!isLoggedIn) {
       event.preventDefault();
-      setIsModalOpen(true); // Открываем окно авторизации, если не залогинен
-      closeMenu(); // Закрываем меню
+      setIsModalOpen(true); // открываем модальное окно для авторизации
+      closeMenu(); // закрываем меню
     } else {
       closeMenu();
     }
   };
 
+  // функция выхода из аккаунта
   const handleSignOut = () => {
     auth.signOut().then(() => {
-      closeMenu(); // Закрываем меню
-      navigate('/'); // Переход на стартовую страницу после выхода
+      closeMenu(); // закрываем меню после выхода
+      navigate('/'); // переход на главную страницу
     });
   };
 
-  // Новая функция для открытия модального окна и закрытия меню
+  // открытие модального окна и закрытие меню
   const openModalAndCloseMenu = () => {
-    setIsModalOpen(true); // Открываем модальное окно
-    closeMenu(); // Закрываем меню
+    setIsModalOpen(true); // открываем окно авторизации
+    closeMenu(); // закрываем меню
   };
 
   return (
     <div className="burgerMenuContainer">
       <Menu
         isOpen={menuOpen}
-        onStateChange={({ isOpen }) => setMenuOpen(isOpen)} // Простое обновление состояния
+        onStateChange={({ isOpen }) => setMenuOpen(isOpen)} // обновление состояния меню
         left
         width={'70%'}
         customBurgerIcon={false}
@@ -69,7 +72,7 @@ const BurgerMenu = () => {
         <Link
           to={isLoggedIn ? "/favorites" : "#"}
           className="burgerMenuItem button"
-          onClick={handleFavoritesClick}
+          onClick={handleFavoritesClick} // обработчик клика на "избранное"
         >
           Favorites
         </Link>
@@ -85,14 +88,14 @@ const BurgerMenu = () => {
         )}
       </Menu>
 
-      {/* Модальное окно для авторизации */}
+      {/* модальное окно для авторизации */}
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
           <SignInOut closeModal={() => setIsModalOpen(false)} />
         </Modal>
       )}
 
-      {/* Кнопка бургера */}
+      {/* кнопка бургера для открытия меню */}
       <div className="burgerIcon" onClick={() => setMenuOpen(!menuOpen)}>
         <img src="/images/app/burger.svg" alt="Menu" className="burgerIconSvg" />
       </div>

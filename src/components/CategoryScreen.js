@@ -2,29 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { categoriesPoses } from '../categoriesPoses';
 import '../styles/global.css';
-import BurgerMenu from './BurgerMenu'; // Импорт компонента бургер-меню
-import { auth } from './firebaseConfig'; // Подключаем Firebase
+import BurgerMenu from './BurgerMenu'; // компонент бургер-меню
+import { auth } from './firebaseConfig'; // подключаем firebase
 
 function CategoryScreen() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Добавляем состояние авторизации
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // добавляем состояние авторизации
 
-  // Проверяем авторизацию при монтировании компонента
+  // проверяем авторизацию при монтировании компонента
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        setIsLoggedIn(true); // Пользователь авторизован
+        setIsLoggedIn(true); // пользователь авторизован
       } else {
-        setIsLoggedIn(false); // Пользователь не авторизован
+        setIsLoggedIn(false); // пользователь не авторизован
       }
     });
 
-    // Отписываемся от слушателя при размонтировании компонента
+    // отписываемся от слушателя при размонтировании компонента !!!
     return () => unsubscribe();
   }, []);
 
   return (
     <div className="main-container">
-      {/* Включаем бургер-меню */}
+
+      {/* включаем бургер-меню */}
       <div className="header">
         <BurgerMenu isLoggedIn={isLoggedIn} />
       </div>
@@ -39,6 +40,7 @@ function CategoryScreen() {
           </Link>
         ))}
       </div>
+
     </div>
   );
 }
