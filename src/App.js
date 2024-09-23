@@ -13,11 +13,7 @@ function App() {
   return (
     <>
 
-      {/* Сообщение для горизонтальной ориентации */}
-      <div className="landscape-message">
-        <img src="/images/app/arrow.svg" alt="Rotating Arrow" className="rotating-arrow" />
-        <p>Please rotate your phone.</p>
-      </div>
+
 
       {/* Существующие маршруты приложения */}
       <div className="content">

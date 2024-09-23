@@ -718,69 +718,44 @@ h6 {
   cursor: pointer;
 }
 
-@keyframes errorHighlight {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0.3125rem 0.3125rem rgba(255, 0, 0, 0.7);
-    /* 0 0 5px 5px */
-  }
-}
-
-.error {
-  animation: errorHighlight 0.5s ease-out;
-}
-
-/* Стили для landscape ориентации */
-@media screen and (orientation: landscape) {
-  .content {
-    display: none;
-  }
-
-  /* плавное вращение иконки вокруг своей оси */
-  @keyframes spin {
-    10% {
-      transform: rotate(0deg);
-    }
-
-    50% {
-      transform: rotate(360deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  .landscape-message {
+/* Стили для горизонтальной версии */
+@media (orientation: landscape) {
+  .main-container {
+    width: 100%;
+    max-width: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    font-size: 3rem;
-    /* 48px */
-    text-align: center;
-    color: black;
-    font-family: 'Georgia, serif';
     flex-direction: column;
-    font-weight: bold;
   }
 
-  .rotating-arrow {
-    width: 5.625rem;
-    /* 90px */
-    height: 5.625rem;
-    /* 90px */
-    animation: spin 2s linear infinite;
+  .button-container {
+    flex-direction: row;
+    justify-content: center;
+    order: 1;
+    /* Кнопки сверху */
   }
-}
 
-/* В вертикальной ориентации сообщение скрывается, и показывается контент */
-@media screen and (orientation: portrait) {
-  .landscape-message {
+  .titleSmall {
+    order: 2;
+    /* — T H E — под кнопками */
+  }
+
+  .titleLarge {
+    order: 3;
+    /* POSING под — T H E — */
+  }
+
+  .description {
+    order: 4;
+    /* Описание под заголовком POSING */
+  }
+
+  .image {
+    order: 5;
+    /* Картинка внизу */
+  }
+
+  .startScreenHeader {
     display: none;
+    /* Скрываем бургер-меню в горизонтальной версии */
   }
 }
