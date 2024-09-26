@@ -1,31 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { ref, get, remove } from "firebase/database";
-import { database, auth } from './firebaseConfig'; // подключаем firebase
-import BurgerMenu from './BurgerMenu'; // подключаем бургер-меню
+import { database, auth } from './firebaseConfig';
+import BurgerMenu from './BurgerMenu';
 import '../styles/global.css';
 
 function FavoritesScreen() {
-  const [favorites, setFavorites] = useState([]); // создаем состояние для хранения избранных фотографий
+  // создаем состояние для хранения избранных фотографий
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-
+    // получаем данные избранного из базы
     const fetchFavorites = async () => {
 
-      const userId = auth.currentUser.uid; // получаем id текущего пользователя
-      const favoritesRef = ref(database, `users/${userId}/favorites`); // создаем ссылку на данные избранного в базе
+      // получаем id текущего пользователя
+      const userId = auth.currentUser.uid;
+      // создаем ссылку на данные избранного в базе
+      const favoritesRef = ref(database, `users/${userId}/favorites`);
 
       try {
-
-        const snapshot = await get(favoritesRef); // получаем данные из базы
+        // получаем данные из базы
+        const snapshot = await get(favoritesRef);
         if (snapshot.exists()) {
-          const favoritesData = snapshot.val(); // данные избранных фотографий
-          setFavorites(Object.entries(favoritesData)); // обновляем состояние избранного
+
+          // данные избранных фотографий
+          const favoritesData = snapshot.val();
+
+          // обновляем состояние избранного
+          setFavorites(Object.entries(favoritesData));
+
         } else {
-          setFavorites([]); // если избранного нет, устанавливаем пустой массив
+          // если избранного нет, устанавливаем пустой массив
+          setFavorites([]);
         }
 
       } catch (error) {
-        console.error("Error fetching favorites:", error); // обработка ошибок при получении данных
+        // обработка ошибок при получении данных
+        console.error("Error fetching favorites:", error);
       }
 
     };
@@ -33,20 +43,25 @@ function FavoritesScreen() {
     fetchFavorites();
   }, []);
 
+  // функция для удаления избранного фото
   const handleRemoveFavorite = async (key) => {
 
-    const userId = auth.currentUser.uid; // получаем id текущего пользователя
-    const favoriteRef = ref(database, `users/${userId}/favorites/${key}`); // создаем ссылку на конкретное избранное фото
+    // получаем id текущего пользователя
+    const userId = auth.currentUser.uid;
+
+    // создаем ссылку на конкретное избранное фото
+    const favoriteRef = ref(database, `users/${userId}/favorites/${key}`);
 
     try {
+      // удаляем избранное из базы
+      await remove(favoriteRef);
 
-      await remove(favoriteRef); // удаляем избранное из базы
-      setFavorites(prevFavorites => prevFavorites.filter(([favKey]) => favKey !== key)); // обновляем состояние после удаления
+      // обновляем состояние после удаления
+      setFavorites(prevFavorites => prevFavorites.filter(([favKey]) => favKey !== key));
 
     } catch (error) {
-
-      console.error("Error removing favorite:", error); // обработка ошибок при удалении
-
+      // обработка ошибок при удалении
+      console.error("Error removing favorite:", error);
     }
 
   };
@@ -54,7 +69,6 @@ function FavoritesScreen() {
   return (
 
     <div className="main-container">
-      {/* подключаем бургер-меню */}
 
       <div className="header">
         <BurgerMenu />
@@ -64,7 +78,7 @@ function FavoritesScreen() {
 
       {favorites.length === 0 ? (
         <>
-          <p>You have no favorite photos yet.</p> {/* сообщение, если список избранных пустой */}
+          <p>You have no favorite photos yet.</p> {/* сообщение пользователю  */}
         </>
       ) : (
         <div className="favorites-grid">
@@ -73,7 +87,7 @@ function FavoritesScreen() {
 
             <div key={key} className="favorite-item">
 
-              <h2>{key.split('_')[0]}</h2> {/* отображаем имя категории фото */}
+              <h2>{key.split('_')[0]}</h2> {/* имя категории */}
 
               <div className="favorite-image-container">
 
@@ -85,7 +99,7 @@ function FavoritesScreen() {
 
                 <button className="favorite-button" onClick={() => handleRemoveFavorite(key)}>
 
-                  <img src="/images/app/star_on.svg" alt="Remove from Favorites" className="star-icon" /> {/* кнопка удаления фото из избранного */}
+                  <img src="/images/app/star_on.svg" alt="Remove from Favorites" className="star-icon" /> {/* удаления фото из избранного */}
 
                 </button>
 

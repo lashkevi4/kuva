@@ -1,61 +1,120 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { categoriesTips } from '../categoriesTips';
+import { useSwipeable } from 'react-swipeable';
 import '../styles/global.css';
 import BurgerMenu from './BurgerMenu';
 
 function TipDetailScreen() {
+  // получаем параметры из url
+  const { categoryId, tipId } = useParams();
 
-  const { categoryId, tipId } = useParams(); // получение параметров из URL
-  const [state, setState] = useState({ tip: { title: '', content: [], image: '' }, tips: [] }); // инициализация состояния
-  const navigate = useNavigate(); // хук для навигации
+  // находим следующий совет, чтобы перейти к нему
+  const [state, setState] = useState({
+    tip: { title: '', content: [], image: '' },
+    tips: []
+  });
 
-  // поиск категории по categoryid или использование пустых значений по умолчанию
+  // создаем навигацию для перехода по страницам
+  const navigate = useNavigate();
+
+  // ищем категорию по id, если нет — задаем пустое значение
   const category = categoriesTips.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' };
 
   useEffect(() => {
 
-    // запрос данных советов для выбранной категории
-    fetch(`/data/tips/${category.path}/data.json`)
+    // создаем url для запроса данных с сервера
+    const url = `/data/tips/${category.path}/data.json`;
+
+    // отправляем запрос на сервер для получения данных
+    fetch(url)
+
+      // преобразуем ответ сервера в формат json
       .then(response => response.json())
       .then(data => {
 
-        // поиск конкретного совета по tipid
+        // находим совет по id в списке данных
         const tipData = data.tips.find(t => t.id === parseInt(tipId));
 
-        // обновление состояния с текущим советом и списком всех советов
-        setState({ tip: tipData || { title: '', content: [], image: '' }, tips: data.tips });
+        // обновляем данные текущего совета и всех советов
+        setState({
+          tip: tipData || { title: '', content: [], image: '' },
+          tips: data.tips
+        });
       })
-      .catch(error => console.error('Ошибка загрузки данных:', error));
+      .catch(error => {
+        // выводим ошибку в консоль
+        console.error('Error loading data:', error);
+      });
 
+    // зависимости: путь категории и id совета
   }, [category.path, tipId]);
 
-  // функция для получения id следующего совета
+  // получаем id следующего совета
   const getNextTipId = () => {
-    const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId)); // индекс текущего совета
-    return state.tips[(currentIndex + 1) % state.tips.length].id; // id следующего совета (с зацикливанием)
+
+    // находим индекс текущего совета
+    const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId));
+
+    // вычисляем индекс следующего совета
+    const nextIndex = (currentIndex + 1) % state.tips.length;
+
+    // возвращаем индекс следующего совета
+    return state.tips[nextIndex].id;
   };
 
-  // функция для получения id предыдущего совета
+  // получаем индекс предыдущего совета
   const getPrevTipId = () => {
 
-    const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId)); // индекс текущего совета
+    // находим индекс текущего совета
+    const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId));
 
-    return state.tips[(currentIndex - 1 + state.tips.length) % state.tips.length].id; // id предыдущего совета (с зацикливанием)
+    // вычисляем индекс предыдущего совета
+    const prevIndex = (currentIndex - 1 + state.tips.length) % state.tips.length;
+
+    // возвращаем индекс предыдущего совета
+    return state.tips[prevIndex].id;
   };
+
+  // обрабатываем свайп влево
+  const handleSwipeLeft = () => {
+    const nextTipId = getNextTipId();
+    navigate(`/tips/${categoryId}/${nextTipId}`);
+  };
+
+  // обрабатываем свайп вправо
+  const handleSwipeRight = () => {
+    const prevTipId = getPrevTipId();
+    navigate(`/tips/${categoryId}/${prevTipId}`);
+  };
+
+  // настраиваем свайпы с помощью useSwipeable
+  const handlers = useSwipeable({
+
+    // свайп влево - вызываем handleSwipeLeft
+    onSwipedLeft: handleSwipeLeft,
+
+    // свайп вправо - вызываем handleSwipeRight
+    onSwipedRight: handleSwipeRight,
+
+    // Предотвращаем стандартное поведение при свайпе
+    preventDefaultTouchmoveEvent: true,
+
+    // должно работать но у меня не заработало
+    trackMouse: true
+  });
 
   return (
 
     <div className="main-container">
 
-      {/* Компонент бургер-меню */}
       <div className="header">
         <BurgerMenu />
       </div>
 
-      <h1 className="title">{category.name}</h1> {/* отображение названия категории */}
+      <h1 className="title">{category.name}</h1>
 
-      <div className="tip">
+      <div className="tip" {...handlers}>
 
         <img
           src={`/images/tips/${category.path}/${state.tip.image}`}
@@ -63,9 +122,8 @@ function TipDetailScreen() {
           className="tip-image"
         />
 
-        <h2 className="tip-title">{state.tip.title}</h2> {/* отображение заголовка совета */}
+        <h2 className="tip-title">{state.tip.title}</h2>
 
-        {/* отображение контента совета */}
         {state.tip.content.map((paragraph, index) => (
           <p key={index} className="tip-content">{paragraph}</p>
         ))}
@@ -74,24 +132,26 @@ function TipDetailScreen() {
 
       <div className="tip-navigation">
 
-        {/* кнопка перехода к предыдущему совету */}
+        {/* кнопка влево */}
         <button onClick={() => navigate(`/tips/${categoryId}/${getPrevTipId()}`)} className="tip-navButton">
           <img src="/images/app/left.svg" alt="previous" className="tip-icon" />
         </button>
 
-        {/* индикатор текущей страницы */}
+        {/* номер текущей позы */}
         <span className="tip-pageIndicator">{`${tipId}/${state.tips.length}`}</span>
 
-        {/* кнопка перехода к следующему совету */}
+        {/* кнопка вправо */}
         <button onClick={() => navigate(`/tips/${categoryId}/${getNextTipId()}`)} className="tip-navButton">
           <img src="/images/app/right.svg" alt="next" className="tip-icon" />
         </button>
 
       </div>
 
-      <div className="tip-bottomSpace"></div> {/* дополнительное пространство внизу */}
+      {/* дополнительное пространство внизу */}
+      <div className="tip-bottomSpace"></div>
 
     </div>
+
   );
 }
 
