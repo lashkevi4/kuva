@@ -1,110 +1,243 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import Modal from './Modal';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from './firebaseConfig';
 import '../styles/global.css';
 
 function SignInOut({ closeModal }) {
 
-  const [email, setEmail] = useState(''); // состояние для e-mail
-  const [password, setPassword] = useState(''); // состояние для пароля
-  const [isRegister, setIsRegister] = useState(false); // переключатель между регистрацией и входом
-  const [errorMessage, setErrorMessage] = useState(''); // состояние для отображения ошибок
+  const [activeMode, setActiveMode] = useState('signIn');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const isEmailValid = (email) => {
-    // проверяем правильность формата e-mail с помощью регулярного выражения
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  // функция для отображения ошибки
+  const showError = (message) => {
 
-  // функция для входа в систему
-  const handleSignIn = () => {
+    setErrorMessage(message);
 
-    // проверяем корректность e-mail
-    if (!isEmailValid(email)) {
-      setErrorMessage("Invalid email format."); // если формат e-mail некорректен
-      return;
-    }
+    setTimeout(() => {
 
-    // проверяем длину пароля
-    if (password.length < 6) {
-      setErrorMessage("Password should be at least 6 characters."); // если пароль слишком короткий
-      return;
-    }
+      setErrorMessage('');
 
-    // попытка входа через Firebase Authentication
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        closeModal(); // закрываем окно при успешном входе
-      })
-      .catch((error) => {
-        setErrorMessage("Error signing in. Please check your email and password."); // ошибка при входе
-      });
+    }, 3000);
 
   };
 
-  // функция для регистрации
-  const handleSignUp = () => {
+  // функция для отображения успеха
+  const showSuccess = (message) => {
 
-    // проверяем корректность e-mail
-    if (!isEmailValid(email)) {
-      setErrorMessage("Invalid email format."); // если формат e-mail некорректен
-      return;
+    setSuccessMessage(message);
+
+    setTimeout(() => {
+
+      setSuccessMessage('');
+
+      closeModal(); // закрыть модальное окно через 2 секунды
+    }, 2000);
+
+  };
+
+  // обработка входа
+  const handleSignIn = async () => {
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      showSuccess("Successful"); // показать сообщение об успехе
     }
 
-    // проверяем длину пароля
+    catch (error) {
+      showError("Incorrect login or password."); // показать сообщение об ошибке
+    }
+
+  };
+
+  // обработка регистрации
+  const handleSignUp = async () => {
+
     if (password.length < 6) {
-      setErrorMessage("Password should be at least 6 characters."); // если пароль слишком короткий
+      showError("Password must be 6 characters minimum.");
       return;
     }
 
-    // попытка регистрации через Firebase Authentication
-    createUserWithEmailAndPassword(auth, email, password)
+    if (password !== confirmPassword) {
+      showError("Passwords do not match.");
+      return;
+    }
 
-      .then((userCredential) => {
-        closeModal(); // закрываем окно при успешной регистрации
-      })
-      .catch((error) => {
-        setErrorMessage("Registration error. Please try again."); // ошибка при регистрации
-      });
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      showSuccess("Successful"); // показать сообщение об успехе
+    }
 
+    catch (error) {
+      showError("Registration failed."); // показать сообщение об ошибке
+    }
+
+  };
+
+  // обработка восстановления пароля
+  const handleForgotPassword = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      showSuccess("Successful"); // показать сообщение об успехе
+    }
+
+    catch (error) {
+      showError("Error sending password"); // показать сообщение об ошибке
+    }
+
+  };
+
+  // смена режима и сброс полей
+  const handleModeChange = (mode) => {
+    setActiveMode(mode);
+    setErrorMessage('');
+    setSuccessMessage('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
   };
 
   return (
-    <div className="auth-container">
 
-      <h2>{isRegister ? 'Sign Up' : 'Sign In'}</h2>
+    <Modal onClose={closeModal}>
 
-      <div className="auth-inputs">
+      <div className="auth-container">
 
-        <input
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} // обновляем e-mail при вводе
-        />
+        <div className="auth-header">
 
-        <input
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} // обновляем пароль при вводе
-        />
+          <h2
+            className={`auth-title ${activeMode === 'signIn' ? 'active' : ''}`}
+            onClick={() => handleModeChange('signIn')}
+          >
+            SIGN IN
+          </h2>
+
+          <h2
+            className={`auth-title ${activeMode === 'signUp' ? 'active' : ''}`}
+            onClick={() => handleModeChange('signUp')}
+          >
+            SIGN UP
+          </h2>
+
+        </div>
+
+        <h2
+          className={`auth-title forgot-password ${activeMode === 'forgotPassword' ? 'active' : ''}`}
+          onClick={() => handleModeChange('forgotPassword')}
+        >
+          FORGOT PASSWORD?
+        </h2>
+
+        {errorMessage && <p className="error-message">{errorMessage}</p>} {/* сообщение об ошибке */}
+
+        {successMessage && <p className="success-message">{successMessage}</p>} {/* сообщение об успехе */}
+
+        {activeMode === 'signIn' && (
+          <>
+
+            <div className="auth-inputs">
+
+              <input
+                className="auth-input"
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+              <input
+                className="auth-input"
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+
+            </div>
+
+            <div className="auth-button">
+
+              <button className="login-button" onClick={handleSignIn}>LOG IN</button>
+
+            </div>
+
+          </>
+
+        )}
+
+        {activeMode === 'signUp' && (
+          <>
+            <div className="auth-inputs">
+
+              <input
+                className="auth-input"
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+              <input
+                className="auth-input"
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+
+              <input
+                className="auth-input"
+                type="password"
+                placeholder="Confirm password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+
+            </div>
+
+            <div className="auth-button">
+
+              <button className="login-button" onClick={handleSignUp}>CREATE</button>
+
+            </div>
+
+          </>
+
+        )}
+
+        {activeMode === 'forgotPassword' && (
+          <>
+
+            <div className="auth-inputs">
+
+              <input
+                className="auth-input"
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+
+            </div>
+
+            <div className="auth-button">
+
+              <button className="login-button" onClick={handleForgotPassword}>SEND</button>
+
+            </div>
+
+          </>
+
+        )}
 
       </div>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>} {/* отображение ошибки при наличии */}
+    </Modal>
 
-      <button className="auth-button" onClick={isRegister ? handleSignUp : handleSignIn}>
-        {isRegister ? 'Sign Up' : 'Sign In'} {/* кнопка для входа или регистрации */}
-      </button>
-
-      <p className="toggle-link" onClick={() => setIsRegister(!isRegister)}>
-        {isRegister ? 'Already have an account? Sign In' : 'Don’t have an account? Sign Up'} {/* ссылка для переключения режима */}
-      </p>
-
-      <button className="close-button" onClick={closeModal}>Close</button> {/* кнопка для закрытия модального окна */}
-
-    </div>
   );
 }
 
