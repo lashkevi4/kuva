@@ -58,7 +58,7 @@ function SignInOut({ closeModal }) {
   const handleSignUp = async () => {
 
     if (password.length < 6) {
-      showError("Password must be 6 characters minimum.");
+      showError("Password must be at least 6 characters.");
       return;
     }
 
@@ -69,17 +69,31 @@ function SignInOut({ closeModal }) {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      showSuccess("Successful"); // показать сообщение об успехе
+      showSuccess("Registration successful!");
     }
 
     catch (error) {
-      showError("Registration failed."); // показать сообщение об ошибке
+
+      if (error.code === 'auth/email-already-in-use') {
+        showError("You are already registered with this email.");
+      }
+
+      else if (error.code === 'auth/invalid-email') {
+        showError("Invalid email address.");
+      }
+
+      else {
+        showError("Registration failed. Please try again.");
+      }
+
     }
 
   };
 
+
   // обработка восстановления пароля
   const handleForgotPassword = async () => {
+
     try {
       await sendPasswordResetEmail(auth, email);
       showSuccess("Successful"); // показать сообщение об успехе
