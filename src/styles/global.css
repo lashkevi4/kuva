@@ -753,3 +753,34 @@ h6 {
     display: none;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pose-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.pose-image-container img {
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.pose-image-container.swipe-left img {
+  transform: translateX(-100%);
+}
+
+.pose-image-container.swipe-right img {
+  transform: translateX(100%);
+}

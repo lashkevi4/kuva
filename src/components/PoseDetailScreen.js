@@ -9,11 +9,12 @@ import SignInOut from './SignInOut';
 import { useSwipeable } from 'react-swipeable';
 import '../styles/global.css';
 
+
 function PoseDetailScreen() {
   // берем параметры из url
   const { categoryId, poseId } = useParams();
 
-  //создаем состояние для текущей позы и всех поз
+  // создаем состояние для текущей позы и всех поз
   const [state, setState] = useState({
     pose: { title: '', description: '', image: '' },
     poses: []
@@ -26,23 +27,34 @@ function PoseDetailScreen() {
   // создаем функцию для навигации между страницами
   const navigate = useNavigate();
 
+  // состояние для управления классами анимации
+  const [animationClass, setAnimationClass] = useState('');
+
   // ищем категорию по id
   const category = categoriesPoses.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' };
 
   // загружаем данные о позах при изменении категории или позы
   useEffect(() => {
     fetch(`/images/photos/${category.path}/data.json`)
+
       .then(response => response.json())
       .then(data => {
+
         // ищем текущую позу по id
         const poseData = data.photos.find(p => p.id === parseInt(poseId));
+
         // обновляем состояние с данными поз
         setState({
           pose: poseData || { title: '', description: '', image: '' },
           poses: data.photos
         });
+
+        // сбрасываем класс анимации после загрузки новой позы
+        setAnimationClass('');
       })
+
       .catch(error => console.error('Error loading data:', error));
+
   }, [category.path, poseId]);
 
   // Проверяем, добавлена ли поза в избранное
@@ -60,6 +72,7 @@ function PoseDetailScreen() {
       // получаем id пользователя и создаем ключ избранного
       const userId = auth.currentUser.uid;
       const favoriteKey = `${category.name}_${poseId}`;
+
       // создаем ссылку на запись избранного в базе данных
       const favoriteRef = ref(database, `users/${userId}/favorites/${favoriteKey}`);
 
@@ -68,7 +81,9 @@ function PoseDetailScreen() {
         const snapshot = await get(favoriteRef);
         // обновляем состояние избранного в зависимости от наличия записи
         setIsPhotoFavorite(snapshot.exists());
-      } catch (error) {
+      }
+
+      catch (error) {
         // сообщение об ошибке в консоль
         console.error("Error checking favorite:", error);
       }
@@ -97,28 +112,55 @@ function PoseDetailScreen() {
         // если поза уже в избранном, удаляем ее из базы данных и обновляем состояние
         await remove(favoriteRef);
         setIsPhotoFavorite(false);
-      } else {
+      }
 
+      else {
         // если поза не в избранном, добавляем ее в базу данных и обновляем состояние
         await set(favoriteRef, { photoId: poseId });
         setIsPhotoFavorite(true);
       }
+
     } catch (error) {
       // обрабатываем ошибку при обновлении избранного
       console.error("Error updating favorite:", error);
     }
+
   };
 
   // рассчитываем id для следующей и предыдущей позы
   const nextPoseId = parseInt(poseId) < state.poses.length ? parseInt(poseId) + 1 : 1;
   const prevPoseId = parseInt(poseId) > 1 ? parseInt(poseId) - 1 : state.poses.length;
 
+  // функция для обработки свайпа влево
+  const handleSwipedLeft = () => {
+
+    // устанавливаем класс анимации для свайпа влево
+    setAnimationClass('swipe-left');
+
+    // даем время для анимации и переходим к следующей позе
+    setTimeout(() => {
+      navigate(`/pose-detail/${categoryId}/${nextPoseId}`);
+    }, 300); // время длительности анимации
+
+  };
+
+  // функция для обработки свайпа вправо
+  const handleSwipedRight = () => {
+
+    // устанавливаем класс анимации для свайпа вправо
+    setAnimationClass('swipe-right');
+
+    // даем время для анимации и переходим к следующей позе
+    setTimeout(() => {
+      navigate(`/pose-detail/${categoryId}/${prevPoseId}`);
+    }, 300); // время длительности анимации
+  };
+
   // настраиваем жесты свайпов
   const handlers = useSwipeable({
-    onSwipedLeft: () => navigate(`/pose-detail/${categoryId}/${nextPoseId}`),
-    onSwipedRight: () => navigate(`/pose-detail/${categoryId}/${prevPoseId}`),
+    onSwipedLeft: handleSwipedLeft,
+    onSwipedRight: handleSwipedRight,
     preventDefaultTouchmoveEvent: true,
-    // должно работать но у меня не заработало
     trackMouse: true
   });
 
@@ -133,7 +175,7 @@ function PoseDetailScreen() {
 
       <div className="pose-content" {...handlers}>
 
-        <div className="pose-image-container">
+        <div className={`pose-image-container ${animationClass}`}>
 
           <img
             src={`/images/photos/${category.path}/${state.pose.image}`}
@@ -176,10 +218,13 @@ function PoseDetailScreen() {
 
       {/* модальное окно */}
       {isModalOpen && (
+
         <Modal onClose={() => setIsModalOpen(false)}>
           <SignInOut closeModal={() => setIsModalOpen(false)} />
         </Modal>
+
       )}
+
     </div>
   );
 }
