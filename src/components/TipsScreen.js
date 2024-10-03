@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { categoriesTips } from '../categoriesTips';
-import '../styles/global.css';
 import BurgerMenu from './BurgerMenu';
+import '../styles/global.css';
+
 
 function TipsScreen() {
   return (
@@ -12,17 +13,17 @@ function TipsScreen() {
         <BurgerMenu />
       </div>
 
-      {/* заголовок страницы */}
+      {/* page title */}
       <h1 className="title">Tips & Tricks</h1>
 
-      {/* применяем стили для сетки */}
+      {/* apply grid styles */}
       <div className="tips-grid">
 
         {categoriesTips.map(category => (
 
           <Link to={`/tips/${category.id}/1`} key={category.id} className="tips-item">
             <img src={`/images/app/${category.icon}`} alt={category.name} className="tips-icon" />
-            <span className="tips-text">{category.name}</span> {/* название категории */}
+            <span className="tips-text">{category.name}</span> {/* нcategory name */}
           </Link>
 
         ))}

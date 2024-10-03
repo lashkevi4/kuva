@@ -10,66 +10,77 @@ import { useSwipeable } from 'react-swipeable';
 import '../styles/global.css';
 
 function PoseDetailScreen() {
-  // берем параметры из url
+  // get parameters from url
   const { categoryId, poseId } = useParams();
 
-  //создаем состояние для текущей позы и всех поз
+  // create state for the current pose and all poses
   const [state, setState] = useState({
     pose: { title: '', description: '', image: '' },
     poses: []
   });
 
-  // создаем состояние для избранного и состояния модального окна
+  // create state for favorite status and modal window
   const [isPhotoFavorite, setIsPhotoFavorite] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // создаем функцию для навигации между страницами
+  // create function for navigation between pages
   const navigate = useNavigate();
 
-  // ищем категорию по id
+  // find the category by id
   const category = categoriesPoses.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' };
 
-  // загружаем данные о позах при изменении категории или позы
+  // load pose data when category or pose changes
   useEffect(() => {
+
     fetch(`/images/photos/${category.path}/data.json`)
       .then(response => response.json())
       .then(data => {
-        // ищем текущую позу по id
+
+        // find the current pose by id
         const poseData = data.photos.find(p => p.id === parseInt(poseId));
-        // обновляем состояние с данными поз
+
+        // update state with pose data
         setState({
           pose: poseData || { title: '', description: '', image: '' },
           poses: data.photos
+
         });
+
       })
+
+      // log error to console
       .catch(error => console.error('Error loading data:', error));
+
   }, [category.path, poseId]);
 
-  // Проверяем, добавлена ли поза в избранное
+  // check if the pose is marked as favorite
   useEffect(() => {
 
-    // функция для проверки, является ли поза избранной
+    // function to check if the pose is in favorites
     const checkIfFavorite = async () => {
 
-      // если пользователь не авторизован, сбрасываем флаг избранного
+      // if the user is not logged in, reset favorite status
       if (!auth.currentUser) {
         setIsPhotoFavorite(false);
         return;
       }
 
-      // получаем id пользователя и создаем ключ избранного
+      // get the user id and create a key for the favorite pose
       const userId = auth.currentUser.uid;
       const favoriteKey = `${category.name}_${poseId}`;
-      // создаем ссылку на запись избранного в базе данных
+
+      // create a reference to the favorite entry in the database
       const favoriteRef = ref(database, `users/${userId}/favorites/${favoriteKey}`);
 
       try {
-        // проверяем, существует ли запись в избранном
+        // check if the pose is in favorites
         const snapshot = await get(favoriteRef);
-        // обновляем состояние избранного в зависимости от наличия записи
+
+        // update favorite status based on the database entry
         setIsPhotoFavorite(snapshot.exists());
       } catch (error) {
-        // сообщение об ошибке в консоль
+
+        // log error to console
         console.error("Error checking favorite:", error);
       }
 
@@ -78,47 +89,48 @@ function PoseDetailScreen() {
     checkIfFavorite();
   }, [category.name, poseId]);
 
-  // функция для добавления или удаления позы в избранное
+  // function to add or remove pose from favorites
   const handleFavoriteToggle = async () => {
     if (!auth.currentUser) {
       setIsModalOpen(true);
       return;
     }
 
-    // создаем данные для ссылки на избранное: id пользователя, ключ и путь в базе данных
+    // create data for the favorite reference: user id, key, and database path
     const userId = auth.currentUser.uid;
     const favoriteKey = `${category.name}_${poseId}`;
     const favoriteRef = ref(database, `users/${userId}/favorites/${favoriteKey}`);
 
-    // переключаем состояние избранного: добавляем или удаляем позу 'в' или 'из' избранного
+    // toggle favorite status: add or remove pose from favorites
     try {
       if (isPhotoFavorite) {
 
-        // если поза уже в избранном, удаляем ее из базы данных и обновляем состояние
+        // if the pose is already in favorites, remove it from the database and update state
         await remove(favoriteRef);
         setIsPhotoFavorite(false);
       } else {
 
-        // если поза не в избранном, добавляем ее в базу данных и обновляем состояние
+        // if the pose is not in favorites, add it to the database and update state
         await set(favoriteRef, { photoId: poseId });
         setIsPhotoFavorite(true);
       }
+
     } catch (error) {
-      // обрабатываем ошибку при обновлении избранного
+      // handle error while updating favorite status
       console.error("Error updating favorite:", error);
     }
+
   };
 
-  // рассчитываем id для следующей и предыдущей позы
+  // calculate id for the next and previous pose
   const nextPoseId = parseInt(poseId) < state.poses.length ? parseInt(poseId) + 1 : 1;
   const prevPoseId = parseInt(poseId) > 1 ? parseInt(poseId) - 1 : state.poses.length;
 
-  // настраиваем жесты свайпов
+  // configure swipe gestures
   const handlers = useSwipeable({
     onSwipedLeft: () => navigate(`/pose-detail/${categoryId}/${nextPoseId}`),
     onSwipedRight: () => navigate(`/pose-detail/${categoryId}/${prevPoseId}`),
     preventDefaultTouchmoveEvent: true,
-    // должно работать но у меня не заработало
     trackMouse: true
   });
 
@@ -159,29 +171,35 @@ function PoseDetailScreen() {
 
       <div className="pose-navigation">
 
-        {/* кнопка влево */}
+        {/* button to go to the previos pose */}
         <button onClick={() => navigate(`/pose-detail/${categoryId}/${prevPoseId}`)} className="pose-navButton">
           <img src="/images/app/left.svg" alt="previous" className="pose-icon" />
         </button>
 
-        {/* номер текущей позы */}
+        {/* display the current pose number */}
         <span className="pose-pageIndicator">{`${poseId}/${state.poses.length}`}</span>
 
-        {/* кнопка вправо */}
+        {/* button to go to the next pose */}
         <button onClick={() => navigate(`/pose-detail/${categoryId}/${nextPoseId}`)} className="pose-navButton">
           <img src="/images/app/right.svg" alt="next" className="pose-icon" />
         </button>
 
       </div>
 
-      {/* модальное окно */}
+      {/* modal window for login */}
       {isModalOpen && (
+
         <Modal onClose={() => setIsModalOpen(false)}>
           <SignInOut closeModal={() => setIsModalOpen(false)} />
         </Modal>
+
       )}
+
     </div>
+
   );
+
 }
+
 
 export default PoseDetailScreen;

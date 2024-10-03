@@ -13,7 +13,7 @@ function SignInOut({ closeModal }) {
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
-  // функция для отображения ошибки
+  // function to show an error message
   const showError = (message) => {
 
     setErrorMessage(message);
@@ -26,7 +26,7 @@ function SignInOut({ closeModal }) {
 
   };
 
-  // функция для отображения успеха
+  // function to show a success message
   const showSuccess = (message) => {
 
     setSuccessMessage(message);
@@ -35,26 +35,26 @@ function SignInOut({ closeModal }) {
 
       setSuccessMessage('');
 
-      closeModal(); // закрыть модальное окно через 2 секунды
+      closeModal(); // close modal after 2 seconds
     }, 2000);
 
   };
 
-  // обработка входа
+  // handle login
   const handleSignIn = async () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      showSuccess("Successful"); // показать сообщение об успехе
+      showSuccess("Successful"); // show success message
     }
 
     catch (error) {
-      showError("Incorrect login or password."); // показать сообщение об ошибке
+      showError("Incorrect login or password."); // show erorr message
     }
 
   };
 
-  // обработка регистрации
+  // handle registration
   const handleSignUp = async () => {
 
     if (password.length < 6) {
@@ -91,21 +91,21 @@ function SignInOut({ closeModal }) {
   };
 
 
-  // обработка восстановления пароля
+  // handle password reset
   const handleForgotPassword = async () => {
 
     try {
       await sendPasswordResetEmail(auth, email);
-      showSuccess("Successful"); // показать сообщение об успехе
+      showSuccess("Successful"); // show success message
     }
 
     catch (error) {
-      showError("Error sending password"); // показать сообщение об ошибке
+      showError("Error sending password"); // show erorr message
     }
 
   };
 
-  // смена режима и сброс полей
+  // switch modes (sign in, sign up, forgot password) and reset fields
   const handleModeChange = (mode) => {
     setActiveMode(mode);
     setErrorMessage('');
@@ -146,9 +146,9 @@ function SignInOut({ closeModal }) {
           FORGOT PASSWORD?
         </h2>
 
-        {errorMessage && <p className="error-message">{errorMessage}</p>} {/* сообщение об ошибке */}
+        {errorMessage && <p className="error-message">{errorMessage}</p>} {/* show erorr message */}
 
-        {successMessage && <p className="success-message">{successMessage}</p>} {/* сообщение об успехе */}
+        {successMessage && <p className="success-message">{successMessage}</p>} {/* show success message */}
 
         {activeMode === 'signIn' && (
           <>
@@ -254,5 +254,6 @@ function SignInOut({ closeModal }) {
 
   );
 }
+
 
 export default SignInOut;

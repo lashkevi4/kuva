@@ -1,4 +1,4 @@
-/* -------------------- ГЛОБАЛЬНЫЕ СТИЛИ -------------------- */
+/* -------------------- GLOBAL STYLES -------------------- */
 
 body,
 html {
@@ -9,10 +9,9 @@ html {
   box-sizing: border-box;
 }
 
-/* ориентируемся на мобильную версию !!! */
+/* targeting mobile version */
 .main-container {
   max-width: 26.875rem;
-  /* 430px */
   margin: 0 auto;
   padding: 1.25rem;
   text-align: center;
@@ -33,9 +32,7 @@ h6 {
 
 .title {
   font-size: 2.25rem;
-  /* 36px */
   margin: 1.25rem 0 1.25rem;
-  /* отступы сверху и снизу */
 }
 
 .header {
@@ -55,37 +52,29 @@ h6 {
 .backIcon,
 .burgerIcon {
   width: 1.875rem;
-  /* 30px */
   height: 1.875rem;
-  /* 30px */
 }
 
 .bm-menu {
   background: #fff;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+  padding: 2.5rem 1.5rem 0;
+  font-size: 1.15rem;
 }
 
 .bm-item-list a {
   display: block;
   padding: 0.625rem 1.25rem;
-  /* 10px 20px */
   margin: 1.25rem 0;
-  /* 20px 0 */
   width: 80%;
   text-align: center;
   text-decoration: none;
   color: #000;
   background-color: rgb(247, 243, 238);
   border: 0.125rem solid rgb(101, 98, 94);
-  /* 2px */
   border-radius: 0.3125rem;
-  /* 5px */
   font-family: 'Georgia, serif';
   font-size: 1.875rem;
-  /* 30px */
   box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
-  /* 0px 4px 6px */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -94,7 +83,7 @@ h6 {
   color: #fff;
 }
 
-/* ------- затемнение экрана при открытом меню -------- */
+/* overlay screen when menu is open */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
   top: 0;
@@ -105,7 +94,7 @@ h6 {
   z-index: 1000;
 }
 
-/* стили для кнопок и изображений */
+/* button and image styles */
 .iconButton {
   background: none;
   border: none;
@@ -117,11 +106,8 @@ h6 {
 
 .iconImage {
   width: 1.875rem;
-  /* 30px */
   height: 1.875rem;
-  /* 30px */
 }
-
 
 /* -------------------- CategoryScreen -------------------- */
 
@@ -129,29 +115,22 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
-  /* 10px */
   align-items: center;
   justify-content: center;
-  /* центрирование содержимого */
 }
 
 .category-item {
   display: flex;
   align-items: center;
   padding: 0.3125rem;
-  /* 5px */
   border: 0.125rem solid rgb(101, 98, 94);
-  /* 2px */
   border-radius: 0.625rem;
-  /* 10px */
   text-decoration: none;
   color: #000;
   width: 100%;
   max-width: 18.75rem;
-  /* 300px */
   background-color: rgb(247, 243, 238);
   box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
-  /* 0px 4px 6px */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -160,7 +139,7 @@ h6 {
   color: #fff;
 }
 
-/* инверсия цвета иконок при наведении на кнопки */
+/* invert icon colors on hover */
 .category-item:hover .category-icon {
   filter: invert(1);
   transition: filter 0.3s;
@@ -168,45 +147,35 @@ h6 {
 
 .category-icon {
   width: 3.125rem;
-  /* 50px */
   height: 3.125rem;
-  /* 50px */
   transition: filter 0.3s;
 }
 
 .category-text {
   font-size: 1.875rem;
-  /* 30px */
   flex: 1;
   text-align: center;
 }
-
 
 /* -------------------- PosePreviewScreen -------------------- */
 
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* две колонки одинаковой ширины */
   gap: 0.625rem;
-  /* 10px */
   justify-content: center;
 }
 
 .preview-item {
   border: 0.0625rem solid #000;
-  /* 1px */
   border-radius: 0.625rem;
-  /* 10px */
   overflow: hidden;
 }
 
 .preview-image {
   width: 100%;
   border-radius: 0.625rem;
-  /* 10px */
 }
-
 
 /* -------------------- TipsScreen -------------------- */
 
@@ -214,29 +183,22 @@ h6 {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
-  /* 10px */
   align-items: center;
   justify-content: center;
-  /* центрирование содержимого */
 }
 
 .tips-item {
   display: flex;
   align-items: center;
   padding: 0.3125rem;
-  /* 5px */
   border: 0.125rem solid rgb(101, 98, 94);
-  /* 2px */
   border-radius: 0.625rem;
-  /* 10px */
   text-decoration: none;
   color: #000;
   width: 100%;
   max-width: 18.75rem;
-  /* 300px */
   background-color: rgb(247, 243, 238);
   box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
-  /* 0px 4px 6px */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -245,7 +207,7 @@ h6 {
   color: #fff;
 }
 
-/* инверсия цвета иконок при наведении на кнопки */
+/* invert icon colors on hover */
 .tips-item:hover .tips-icon {
   filter: invert(1);
   transition: filter 0.3s;
@@ -253,19 +215,15 @@ h6 {
 
 .tips-icon {
   width: 3.125rem;
-  /* 50px */
   height: 3.125rem;
-  /* 50px */
   transition: filter 0.3s;
 }
 
 .tips-text {
   font-size: 1.875rem;
-  /* 30px */
   flex: 1;
   text-align: center;
 }
-
 
 /* -------------------- PoseDetailScreen -------------------- */
 
@@ -293,15 +251,12 @@ h6 {
 
 .pose-backIcon {
   width: 2rem;
-  /* 32px */
   height: 2rem;
-  /* 32px */
 }
 
 .pose-title {
   margin: 0 auto;
   font-size: 2.25rem;
-  /* 36px */
   font-family: 'Georgia, serif';
 }
 
@@ -309,7 +264,6 @@ h6 {
   text-align: center;
   margin: 0 auto;
   max-width: 25rem;
-  /* 400px */
 }
 
 .pose-image-container {
@@ -320,14 +274,12 @@ h6 {
   max-width: 100%;
   height: auto;
   border-radius: 0.3125rem;
-  /* 5px */
 }
 
 .pose-description {
   text-align: left;
   font-size: 1.4rem;
   margin-top: 0.625rem;
-  /* 10px */
 }
 
 .pose-navigation {
@@ -335,9 +287,7 @@ h6 {
   justify-content: space-between;
   align-items: center;
   max-width: 25rem;
-  /* 400px */
   margin: 1.25rem auto;
-  /* 20px auto */
 }
 
 .pose-navButton {
@@ -348,37 +298,29 @@ h6 {
 
 .pose-icon {
   width: 1.875rem;
-  /* 30px */
   height: 1.875rem;
-  /* 30px */
 }
 
 .pose-pageIndicator {
   font-size: 1.5rem;
-  /* 24px */
   font-family: 'Georgia, serif';
 }
 
 .pose-bottomSpace {
   height: 1.25rem;
-  /* 20px */
 }
-
 
 /* -------------------- TipDetailScreen -------------------- */
 
 .tip-container {
   text-align: center;
   padding: 1.25rem;
-  /* 20px */
   position: relative;
 }
 
 .tip-title {
   font-size: 2.25rem;
-  /* 36px */
   margin: 1.25rem 0;
-  /* 20px 0 */
   text-align: center;
   font-family: 'Georgia, serif';
 }
@@ -388,9 +330,7 @@ h6 {
   justify-content: space-between;
   align-items: center;
   max-width: 25rem;
-  /* 400px */
   margin: 1.25rem auto;
-  /* 20px auto */
 }
 
 .tip-navButton {
@@ -401,27 +341,22 @@ h6 {
 
 .tip-icon {
   width: 1.875rem;
-  /* 30px */
   height: 1.875rem;
-  /* 30px */
 }
 
 .tip-pageIndicator {
   font-size: 1.5rem;
-  /* 24px */
   font-family: 'Georgia, serif';
 }
 
 .tip-bottomSpace {
   height: 1.25rem;
-  /* 20px */
 }
 
 .tip-image {
   max-width: 100%;
   height: auto;
   border-radius: 0.3125rem;
-  /* 5px */
 }
 
 .tip-content {
@@ -429,73 +364,55 @@ h6 {
   font-size: 1.4rem;
 }
 
-
 /* -------------------- FavoritesScreen -------------------- */
 
-/* основной контейнер */
 .favorites-container {
   text-align: center;
   padding: 1.25rem;
-  /* 20px */
 }
 
 .favorites-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.625rem;
-  /* 10px */
   justify-items: center;
 }
 
-/* контейнер для изображения и кнопки удаления */
 .favorite-image-container {
   position: relative;
 }
 
-/* стиль для каждого элемента избранного */
 .favorite-item {
   border-radius: 0.625rem;
-  /* 10px */
   width: 100%;
 }
 
-/* изображение в избранном */
 .favorite-item img {
   width: 100%;
   border: 0.125rem solid #000;
-  /* 2px */
   border-radius: 0.625rem;
-  /* 10px */
 }
 
-/* кнопка удаления из избранного */
 .favorite-button {
   position: absolute;
   top: 0.625rem;
-  /* 10px */
   right: 0.625rem;
-  /* 10px */
   background: rgba(255, 255, 255, 0.5);
   border: none;
   cursor: pointer;
   border-radius: 50%;
   padding: 0.3125rem;
-  /* 5px */
 }
 
 .favorite-button img {
   width: 1.5rem;
-  /* 24px */
   height: 1.5rem;
-  /* 24px */
   border: none;
 }
 
 .favorite-item h2 {
   font-size: 1.875rem;
-  /* 30px */
   margin: 0.3125rem 0;
-  /* 5px */
   font-family: 'Georgia, serif';
 }
 
@@ -511,45 +428,36 @@ h6 {
   top: 0;
   left: 0;
   width: 70%;
-  /* ширина меню */
   height: 100%;
   z-index: 1001;
 }
 
 .bm-menu {
   background: #fff;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+  padding: 2.5rem 1.5rem 0;
+  font-size: 1.15rem;
   width: 100%;
   max-height: 100vh;
-  /* ограничивает высоту меню высотой окна браузера */
   overflow-y: auto;
-  /* позволяет прокручивать меню, если контент превышает высоту экрана */
 }
 
 .titleSmall {
   font-size: 1.25rem;
-  /* 20px */
   margin: 0.625rem 0;
-  /* 10px 0 */
   font-family: 'Georgia, serif';
   letter-spacing: 0.2em;
 }
 
 .titleLarge {
   font-size: 2.25rem;
-  /* 36px */
   margin: 0.3125rem 0;
-  /* 5px 0 */
   font-family: 'Georgia, serif';
   letter-spacing: 0.05em;
 }
 
 .description {
   font-size: 1.125rem;
-  /* 18px */
   margin: 0.625rem 0 1.25rem 0;
-  /* 10px 0 20px 0 */
   text-align: center;
 }
 
@@ -567,25 +475,18 @@ h6 {
 .button {
   display: block;
   padding: 0.625rem 1.25rem;
-  /* 10px 20px */
   margin: 0.3125rem;
-  /* 5px */
   width: 80%;
   max-width: 18.75rem;
-  /* 300px */
   text-align: center;
   text-decoration: none;
   color: #000;
   background-color: rgb(247, 243, 238);
   border: 0.125rem solid rgb(101, 98, 94);
-  /* 2px */
   border-radius: 0.3125rem;
-  /* 5px */
   font-family: 'Georgia, serif';
   font-size: 1.875rem;
-  /* 30px */
   box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
-  /* 0px 4px 6px */
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -618,11 +519,10 @@ h6 {
 }
 
 .auth-container {
-  /* display: flex; */
   flex-direction: column;
-  padding: 20px;
+  padding: 1.25rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background-color: #f9f9f9;
   text-align: center;
 }
@@ -630,57 +530,50 @@ h6 {
 .auth-header {
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 
 .auth-title {
-  font-size: 18px;
+  font-size: 1.125rem;
   cursor: pointer;
   margin: 0;
   display: inline-block;
 }
 
 .auth-header .auth-title {
-  margin: 0 15px;
+  margin: 0 0.9375rem;
 }
 
 .auth-title.active {
   font-weight: bold;
-  border-bottom: 2px solid #007bff;
+  border-bottom: 0.125rem solid #007bff;
   color: #007bff;
 }
 
 .forgot-password {
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 
 .auth-inputs {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 }
 
 .auth-input {
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 0.625rem;
+  margin-bottom: 0.625rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 0.25rem;
+  font-size: 1rem;
 }
-
-/*
-.auth-button {
-  display: flex;
-  justify-content: center;
-}
-*/
 
 .login-button {
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   cursor: pointer;
 }
 
@@ -690,25 +583,24 @@ h6 {
 
 .error-message {
   color: red;
-  margin-top: 5px;
+  margin-top: 0.3125rem;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .success-message {
   color: green;
   font-weight: bold;
-  margin-top: 10px;
-  font-size: 18px;
+  margin-top: 0.625rem;
+  font-size: 1.125rem;
 }
 
-/* стили для landscape ориентации */
+/* landscape orientation styles */
 @media screen and (orientation: landscape) {
   .content {
     display: none;
   }
 
-  /* плавное вращение иконки вокруг своей оси */
   @keyframes spin {
     10% {
       transform: rotate(0deg);
@@ -730,7 +622,6 @@ h6 {
     height: 100vh;
     width: 100vw;
     font-size: 3rem;
-    /* 48px */
     text-align: center;
     color: black;
     font-family: 'Georgia, serif';
@@ -740,14 +631,12 @@ h6 {
 
   .rotating-arrow {
     width: 5.625rem;
-    /* 90px */
     height: 5.625rem;
-    /* 90px */
     animation: spin 2s linear infinite;
   }
 }
 
-/* в вертикальной ориентации сообщение скрывается, и показывается контент */
+/* portrait orientation hides the landscape message and shows content */
 @media screen and (orientation: portrait) {
   .landscape-message {
     display: none;

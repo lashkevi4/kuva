@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
+// firebase configuration with environment variables
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -11,8 +12,13 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
+// initialize Firebase app
 const app = initializeApp(firebaseConfig);
+
+// set up authentication
 const auth = getAuth(app);
+
+// set up database
 const database = getDatabase(app);
 
 export { auth, database };

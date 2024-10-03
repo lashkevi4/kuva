@@ -2,105 +2,108 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { categoriesTips } from '../categoriesTips';
 import { useSwipeable } from 'react-swipeable';
-import '../styles/global.css';
 import BurgerMenu from './BurgerMenu';
+import '../styles/global.css';
+
 
 function TipDetailScreen() {
-  // получаем параметры из url
+
+  // get parameters from url
   const { categoryId, tipId } = useParams();
 
-  // находим следующий совет, чтобы перейти к нему
+  // create state to hold the current tip and all tips
   const [state, setState] = useState({
     tip: { title: '', content: [], image: '' },
     tips: []
   });
 
-  // создаем навигацию для перехода по страницам
+  // create navigation function to move between pages
   const navigate = useNavigate();
 
-  // ищем категорию по id, если нет — задаем пустое значение
+  // find the category by id or set an empty object if not found
   const category = categoriesTips.find(c => c.id === parseInt(categoryId)) || { name: '', path: '' };
 
   useEffect(() => {
 
-    // создаем url для запроса данных с сервера
+    // create url to request data from the server
     const url = `/data/tips/${category.path}/data.json`;
 
-    // отправляем запрос на сервер для получения данных
+    // fetch data from the server
     fetch(url)
 
-      // преобразуем ответ сервера в формат json
+      // convert server response to json
       .then(response => response.json())
       .then(data => {
 
-        // находим совет по id в списке данных
+        // find the tip by id in the list
         const tipData = data.tips.find(t => t.id === parseInt(tipId));
 
-        // обновляем данные текущего совета и всех советов
+        // update state with the current tip and all tips
         setState({
           tip: tipData || { title: '', content: [], image: '' },
           tips: data.tips
         });
+
       })
+
       .catch(error => {
-        // выводим ошибку в консоль
+        // log error if data loading fails
         console.error('Error loading data:', error);
       });
 
-    // зависимости: путь категории и id совета
   }, [category.path, tipId]);
 
-  // получаем id следующего совета
+  // get the id of the next tip
   const getNextTipId = () => {
 
-    // находим индекс текущего совета
+    // find the index of the current tip
     const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId));
 
-    // вычисляем индекс следующего совета
+    // calculate the index of the next tip
     const nextIndex = (currentIndex + 1) % state.tips.length;
 
-    // возвращаем индекс следующего совета
+    // return the id of the next tip
     return state.tips[nextIndex].id;
   };
 
-  // получаем индекс предыдущего совета
+  // get the id of the previous tip
   const getPrevTipId = () => {
 
-    // находим индекс текущего совета
+    // find the index of the current tip
     const currentIndex = state.tips.findIndex(t => t.id === parseInt(tipId));
 
-    // вычисляем индекс предыдущего совета
+    // calculate the index of the previous tip
     const prevIndex = (currentIndex - 1 + state.tips.length) % state.tips.length;
 
-    // возвращаем индекс предыдущего совета
+    // return the id of the previous tip
     return state.tips[prevIndex].id;
   };
 
-  // обрабатываем свайп влево
+  // handle swipe left (next tip)
   const handleSwipeLeft = () => {
     const nextTipId = getNextTipId();
     navigate(`/tips/${categoryId}/${nextTipId}`);
   };
 
-  // обрабатываем свайп вправо
+  // handle swipe right (previous tip)
   const handleSwipeRight = () => {
     const prevTipId = getPrevTipId();
     navigate(`/tips/${categoryId}/${prevTipId}`);
   };
 
-  // настраиваем свайпы с помощью useSwipeable
+  // configure swipe gestures using useSwipeable
   const handlers = useSwipeable({
 
-    // свайп влево - вызываем handleSwipeLeft
+    // swipe left - trigger handleSwipeLeft
     onSwipedLeft: handleSwipeLeft,
 
-    // свайп вправо - вызываем handleSwipeRight
+    // swipe right - trigger handleSwipeRight
     onSwipedRight: handleSwipeRight,
 
-    // Предотвращаем стандартное поведение при свайпе
+    // prevent default touchmove event
     preventDefaultTouchmoveEvent: true,
 
-    // должно работать но у меня не заработало
+    // this should work, but it didn't for me
     trackMouse: true
   });
 
@@ -132,27 +135,28 @@ function TipDetailScreen() {
 
       <div className="tip-navigation">
 
-        {/* кнопка влево */}
+        {/* button to go to the previous tip */}
         <button onClick={() => navigate(`/tips/${categoryId}/${getPrevTipId()}`)} className="tip-navButton">
           <img src="/images/app/left.svg" alt="previous" className="tip-icon" />
         </button>
 
-        {/* номер текущей позы */}
+        {/* display the current tip number */}
         <span className="tip-pageIndicator">{`${tipId}/${state.tips.length}`}</span>
 
-        {/* кнопка вправо */}
+        {/* button to go to the next tip */}
         <button onClick={() => navigate(`/tips/${categoryId}/${getNextTipId()}`)} className="tip-navButton">
           <img src="/images/app/right.svg" alt="next" className="tip-icon" />
         </button>
 
       </div>
 
-      {/* дополнительное пространство внизу */}
+      {/* extra space */}
       <div className="tip-bottomSpace"></div>
 
     </div>
 
   );
 }
+
 
 export default TipDetailScreen;

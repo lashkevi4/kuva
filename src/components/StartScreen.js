@@ -9,44 +9,45 @@ import '../styles/global.css';
 
 function StartScreen() {
 
-  const [showModal, setShowModal] = useState(false); // состояние, управляющее видимостью модального окна
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // состояние для отслеживания, авторизован ли пользователь
+  const [showModal, setShowModal] = useState(false); // state to control modal visibility
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // state to track if the user is logged in
 
-  // проверка авторизации пользователя при загрузке компонента
+  // check user authentication when the component is mounted
   useEffect(() => {
 
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        setIsLoggedIn(true); // устанавливаем, что пользователь авторизован
-      } else {
-        setIsLoggedIn(false); // устанавливаем, что пользователь не авторизован
+        setIsLoggedIn(true); // user is logged in
+      }
+      else {
+        setIsLoggedIn(false); // user is not logged in
       }
     });
 
-    // отписываемся от слушателя событий при размонтировании компонента
+    // unsubscribe from the listener when the component is unmounted
     return () => unsubscribe();
 
   }, []);
 
-  // обработчик клика на кнопку "Favorites"
+  // handle click on the "Favorites" button
   const handleFavoritesClick = (e) => {
 
     if (!isLoggedIn) {
-      e.preventDefault(); // предотвращаем переход по ссылке, если пользователь не авторизован
-      setShowModal(true); // открываем модальное окно с формой авторизации
+      e.preventDefault(); // prevent navigation if the user is not logged in
+      setShowModal(true); // show the login modal
     }
 
   };
 
   const closeModal = () => {
-    setShowModal(false); // скрываем модальное окно
+    setShowModal(false); // close the modal
   };
 
   return (
 
     <div className="main-container">
 
-      {/* шапка с бургер-меню, передаем в компонент информацию об авторизации */}
+      {/* header with the burger menu, passing authentication info to the component */}
       <div className="startScreenHeader">
         <BurgerMenu isLoggedIn={isLoggedIn} />
       </div>
@@ -59,25 +60,25 @@ function StartScreen() {
 
       <div className="button-container">
 
-        <Link to="/categories" className="button">Poses</Link> {/* переход к категориям поз */}
+        <Link to="/categories" className="button">Poses</Link> {/* navigate to pose categories */}
 
-        <Link to="/tips" className="button">Tips & Tricks</Link> {/* переход к советам и трюкам */}
+        <Link to="/tips" className="button">Tips & Tricks</Link> {/* navigate to tips and tricks */}
 
-        {/* кнопка "Favorites", доступна только если пользователь авторизован */}
+        {/* Favorites" button, only accessible if the user is logged in */}
         <Link
-          to={isLoggedIn ? "/favorites" : "#"} // если пользователь не авторизован, ссылка не ведет никуда
+          to={isLoggedIn ? "/favorites" : "#"} // if the user is not logged in, the link doesn't navigate anywhere
           className="button"
-          onClick={handleFavoritesClick} // если не авторизован, открываем окно авторизации
+          onClick={handleFavoritesClick} // if not logged in, open the login modal
         >
           Favorites
         </Link>
       </div>
 
-      {/* модальное окно, открывается при клике на favoritesf для неавторизованных пользователей */}
+      {/* modal that opens on "favorites" click for unauthenticated users */}
       {showModal && (
 
         <Modal onClose={closeModal}>
-          <SignInOut closeModal={closeModal} /> {/* компонент формы входа/регистрации */}
+          <SignInOut closeModal={closeModal} /> {/* login/registration form component */}
         </Modal>
 
       )}
@@ -87,5 +88,6 @@ function StartScreen() {
   );
 
 }
+
 
 export default StartScreen;
